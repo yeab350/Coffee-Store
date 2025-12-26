@@ -1,0 +1,11 @@
+Place your background video here as: public/coffee-background.mp4
+
+Then it will automatically play behind the site.
+
+Recommended:
+- Short loop (5–15s)
+- 1080p or smaller
+- H.264 (mp4)
+- No audio (or audio will be muted)
+
+Note: We don’t bundle a real video by default to avoid copyright/licensing issues.
