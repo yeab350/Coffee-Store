@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local environment
+.env
+
+# Nested repo (managed separately)
+coffee_app/

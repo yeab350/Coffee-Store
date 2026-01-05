@@ -25,158 +25,98 @@ type Coffee = {
 
 const coffeeCatalog: Coffee[] = [
   {
-    id: 'bona-zuira-natural',
-    name: 'Bona Zuira Natural',
-    process: 'Natural',
-    region: 'Bona Zuria, Sidama',
-    flavorNotes: ['strawberry compote', 'cacao nib', 'bergamot'],
-    altitude: '1,960 - 2,100 m',
-    pricePerKg: 900,
-    story:
-      'Smallholder lots dried on raised beds, bursting with layered fruit sweetness and silky texture.',
-    imageSrc: '/coffee-placeholder.svg',
-    imageAlt: 'Coffee beans placeholder illustration',
-  },
-  {
-    id: 'ayele-tulu-washed',
-    name: 'Ayele Tulu Washed',
+    id: 'yirgacheffe-washed',
+    name: 'Yirgacheffe – Washed',
     process: 'Washed',
-    region: 'Bensa, Sidama',
-    flavorNotes: ['nectarine', 'orange blossom', 'black tea'],
-    altitude: '1,900 - 2,050 m',
-    pricePerKg: 900,
-    story:
-      'Ayele’s micro-mill produces sparkling washed coffees with jasmine aromatics and crisp structure.',
+    region: 'Yirgacheffe',
+    flavorNotes: ['floral', 'citrus', 'tea-like'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Clean, bright cup with lifted aromatics typical of washed processing.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'demeka-becha',
-    name: 'Demeka Becha',
-    process: 'Honey',
-    region: 'Demeka Becha, Sidama',
-    flavorNotes: ['mango', 'honeycomb', 'lime zest'],
-    altitude: '2,000 - 2,150 m',
-    pricePerKg: 900,
-    story:
-      'Extended honey processing preserves tropical sweetness while keeping a vibrant, lime-toned finish.',
-    imageSrc: '/coffee-placeholder.svg',
-    imageAlt: 'Coffee beans placeholder illustration',
-  },
-  {
-    id: 'bochessa-maleko',
-    name: 'Bochessa Maleko',
+    id: 'yirgacheffe-natural',
+    name: 'Yirgacheffe – Natural',
     process: 'Natural',
-    region: 'Shantawene, Sidama',
-    flavorNotes: ['blueberry', 'dark honey', 'vanilla'],
-    altitude: '1,850 - 2,000 m',
-    pricePerKg: 900,
-    story:
-      'Bochessa’s family lot leans into classic blueberry natural character with a plush, velvety body.',
+    region: 'Yirgacheffe',
+    flavorNotes: ['berry', 'stone fruit', 'sweet'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Fruit-forward profile from whole-cherry drying and careful raised-bed handling.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'gowacho-sidama',
-    name: 'Gowacho Sidama',
+    id: 'sidamo-washed',
+    name: 'Sidamo – Washed',
     process: 'Washed',
-    region: 'Gowacho, Sidama',
-    flavorNotes: ['white peach', 'jasmine', 'lemongrass'],
-    altitude: '1,920 - 2,050 m',
-    pricePerKg: 900,
-    story:
-      'A shimmering washed profile with delicate florals and a ginger-lime sparkle on the finish.',
+    region: 'Sidamo',
+    flavorNotes: ['citrus', 'honey', 'black tea'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Structured and crisp, highlighting clarity and sweetness from washed processing.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'baba-t-anaerobic',
-    name: 'Baba T Anaerobic',
-    process: 'Anaerobic Natural',
-    region: 'Bona Zuria, Sidama',
-    flavorNotes: ['pineapple', 'dark chocolate', 'hibiscus'],
-    altitude: '1,950 - 2,100 m',
-    pricePerKg: 900,
-    story:
-      'Anaerobic fermentation drives fruit complexity while preserving a balanced, syrupy structure.',
-    imageSrc: '/coffee-placeholder.svg',
-    imageAlt: 'Coffee beans placeholder illustration',
-  },
-  {
-    id: 'bona-zuira-honey',
-    name: 'Bona Zuira Honey',
-    process: 'Honey',
-    region: 'Bona Zuria, Sidama',
-    flavorNotes: ['honeydew', 'florals', 'toffee'],
-    altitude: '1,940 - 2,080 m',
-    pricePerKg: 900,
-    story:
-      'A collaborative lot that marries honey processing sweetness with sparkling florals.',
-    imageSrc: '/coffee-placeholder.svg',
-    imageAlt: 'Coffee beans placeholder illustration',
-  },
-  {
-    id: 'berra-xaddicho-natural',
-    name: 'Berra Xaddicho Natural',
+    id: 'guji-natural',
+    name: 'Guji – Natural',
     process: 'Natural',
-    region: 'Arbegona, Sidama',
-    flavorNotes: ['candied raspberry', 'milk chocolate', 'rose'],
-    altitude: '2,000 - 2,150 m',
-    pricePerKg: 900,
-    story:
-      'Slow-dried cherries deliver vivid berry tones with a creamy, confectionary sweetness.',
+    region: 'Guji',
+    flavorNotes: ['ripe fruit', 'cocoa', 'floral'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'A classic natural profile with a rounded body and sweet finish.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'teshale-bona-qeqe',
-    name: 'Teshale Bona QeQe',
+    id: 'harrar-natural',
+    name: 'Harrar – Natural',
     process: 'Natural',
-    region: 'Bona Zuria, Sidama',
-    flavorNotes: ['papaya', 'molasses', 'hibiscus'],
-    altitude: '1,980 - 2,120 m',
-    pricePerKg: 900,
-    story:
-      'Sweet spice and tropical layers complement a syrupy cup with excellent structure for espresso.',
+    region: 'Harrar',
+    flavorNotes: ['dried fruit', 'spice', 'chocolate'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Bold and aromatic, leaning into traditional Harrar natural character.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'shantawene-sidama',
-    name: 'Shantawene Sidama',
-    process: 'Honey',
-    region: 'Shantawene, Sidama',
-    flavorNotes: ['blood orange', 'blackberry', 'nougat'],
-    altitude: '1,900 - 2,050 m',
-    pricePerKg: 900,
-    story:
-      'Transported from forest canopy to raised beds, this honey lot balances citrus and cocoa.',
-    imageSrc: '/coffee-placeholder.svg',
-    imageAlt: 'Coffee beans placeholder illustration',
-  },
-  {
-    id: 'yirgachefe-aricha-washed',
-    name: 'Yirgachefe Aricha Washed',
+    id: 'limu-washed',
+    name: 'Limu – Washed',
     process: 'Washed',
-    region: 'Aricha, Yirgachefe',
-    flavorNotes: ['lemon zest', 'honeysuckle', 'white tea'],
-    altitude: '1,950 - 2,100 m',
-    pricePerKg: 900,
-    story:
-      'Classic Yirgachefe florals with a lifted acidity and crystalline sweetness.',
+    region: 'Limu',
+    flavorNotes: ['sweet citrus', 'caramel', 'tea-like'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Balanced washed coffee with a clean finish and gentle sweetness.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
   {
-    id: 'tsegab-limited-edition',
-    name: 'Tsegab Limited Edition',
-    process: 'Anaerobic Honey',
-    region: 'Gedeb, Gedeo',
-    flavorNotes: ['passionfruit', 'vanilla bean', 'champagne grape'],
-    altitude: '2,000 - 2,120 m',
-    pricePerKg: 900,
-    story:
-      'A micro-lot reserved for our seasonal release with shimmering acidity and velvety finish.',
+    id: 'bench-maji-natural',
+    name: 'Bench Maji – Natural',
+    process: 'Natural',
+    region: 'Bench Maji',
+    flavorNotes: ['tropical fruit', 'jammy', 'cacao'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Sweet natural lot with ripe fruit character and a smooth body.',
+    imageSrc: '/coffee-placeholder.svg',
+    imageAlt: 'Coffee beans placeholder illustration',
+  },
+  {
+    id: 'kaffa-forest-coffee',
+    name: 'Kaffa – Forest Coffee',
+    process: 'Forest Coffee',
+    region: 'Kaffa',
+    flavorNotes: ['herbal', 'floral', 'cocoa'],
+    altitude: '—',
+    pricePerKg: 1500,
+    story: 'Wild and semi-wild coffees traditionally collected from forest systems in Kaffa.',
     imageSrc: '/coffee-placeholder.svg',
     imageAlt: 'Coffee beans placeholder illustration',
   },
@@ -201,32 +141,36 @@ const roastProfiles = [
     id: 'roasted',
     label: 'Roasted',
     blurb: 'We roast to order with live telemetry and cooling curves tuned for filter and espresso.',
-    extraCostPerKg: 60,
+    extraCostPerKg: 400,
   },
   {
     id: 'roasted-ground',
     label: 'Roasted & Ground',
     blurb: 'Freshly ground to your brew method moments before packing for maximum aromatics.',
-    extraCostPerKg: 110,
+    extraCostPerKg: 600,
   },
 ]
 
 const bagSizeOptions = [
-  { value: 0.5, label: '0.5 kg Taster' },
-  { value: 1, label: '1 kg House Bag' },
-  { value: 2, label: '2 kg Pro Roast' },
+  { value: 0.25, label: '250 g' },
+  { value: 0.5, label: '500 g' },
+  { value: 0.75, label: '750 g' },
+  { value: 1, label: '1 kg' },
+  { value: 1.5, label: '1.5 kg' },
+  { value: 2, label: '2 kg' },
 ]
 
 const companyName = 'Abyssinia Beans'
 
-const ACCOUNT_STORAGE_KEY = 'abyssinia-account'
 const SESSION_STORAGE_KEY = 'abyssinia-session'
-const ADMIN_STORAGE_KEY = 'abyssinia-admin-email'
+const TOKEN_STORAGE_KEY = 'abyssinia-token'
+const CART_STORAGE_PREFIX = 'abyssinia-cart:'
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5175'
 
 type BlendRow = {
   id: string
   coffeeId: string
-  weight: number
+  percent: number
 }
 
 type CartBlend = {
@@ -246,22 +190,43 @@ type CartItem = {
 }
 
 type OrderRecord = CartItem & {
+  _id: string
+  userEmail: string
   reference: string
   status: 'Queued' | 'Roasting' | 'Fulfilled'
   fulfilledAt?: number
 }
 
 type AccountProfile = {
+  _id?: string
   name: string
   email: string
-  password: string
   createdAt: number
   role: 'admin' | 'member'
+}
+
+type AdminUserRow = {
+  name: string
+  email: string
+  createdAt: number
+  role: 'admin' | 'member'
+  totalSpent: number
+}
+
+type AdminSummary = {
+  primaryAdminEmail: string
+  totalSignups: number
+  totalSpent: number
+  users: AdminUserRow[]
 }
 
 type BlendNotice = {
   tone: 'positive' | 'warning'
   message: string
+}
+
+type ToastNotice = BlendNotice & {
+  action?: { label: string; to: string }
 }
 
 type PendingCartDraft = {
@@ -270,6 +235,7 @@ type PendingCartDraft = {
   blend: CartBlend[]
   basePrice: number
   bagSize: number
+  quantity: number
   source: 'catalog' | 'custom'
 }
 
@@ -280,40 +246,174 @@ const formatCurrency = (value: number) =>
     minimumFractionDigits: 2,
   }).format(value)
 
+const formatKg = (value: number) => {
+  const rounded = Number(value.toFixed(2))
+  if (rounded > 0 && rounded < 1) {
+    return `${Math.round(rounded * 1000)} g`
+  }
+  return `${rounded} kg`
+}
+
+const computeBagQuantity = (totalKg: number, bagSizeKg: number) => {
+  const totalGrams = Math.round(totalKg * 1000)
+  const bagGrams = Math.round(bagSizeKg * 1000)
+
+  if (!Number.isFinite(totalGrams) || totalGrams <= 0 || !Number.isFinite(bagGrams) || bagGrams <= 0) {
+    return { isExact: false, exactCount: 0, exactBags: 0, nearestUpKg: 0, nearestDownKg: 0 }
+  }
+
+  const remainder = ((totalGrams % bagGrams) + bagGrams) % bagGrams
+  const isExact = remainder === 0
+  const nearestDownGrams = totalGrams - remainder
+  const nearestUpGrams = remainder === 0 ? totalGrams : totalGrams + (bagGrams - remainder)
+
+  return {
+    isExact,
+    exactCount: isExact ? totalGrams / bagGrams : 0,
+    exactBags: totalGrams / bagGrams,
+    nearestUpKg: Number((nearestUpGrams / 1000).toFixed(2)),
+    nearestDownKg: Number((nearestDownGrams / 1000).toFixed(2)),
+  }
+}
+
+const normaliseEmail = (value: string) => value.trim().toLowerCase()
+
+const getCartStorageKey = (email: string) => `${CART_STORAGE_PREFIX}${normaliseEmail(email)}`
+
+const getStoredToken = () => window.localStorage.getItem(TOKEN_STORAGE_KEY) || ''
+
+type ApiError = Error & { status?: number }
+
+type ChatMessage = {
+  role: 'user' | 'assistant'
+  content: string
+}
+
+const apiRequest = async <T,>(
+  path: string,
+  options: RequestInit = {},
+  token: string | null = null,
+): Promise<T> => {
+  const headers = new Headers(options.headers)
+  if (!headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json')
+  }
+  if (token) {
+    headers.set('Authorization', `Bearer ${token}`)
+  }
+
+  const response = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers,
+  })
+
+  const data = (await response.json().catch(() => ({}))) as unknown
+  if (!response.ok) {
+    const message =
+      (data as { error?: string } | null)?.error || `Request failed (${response.status})`
+    const error: ApiError = new Error(message)
+    error.status = response.status
+    throw error
+  }
+  return data as T
+}
+
+const loadCartForEmail = (email: string): CartItem[] => {
+  try {
+    const raw = window.localStorage.getItem(getCartStorageKey(email))
+    if (!raw) return []
+    const parsed = JSON.parse(raw) as CartItem[]
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+const saveCartForEmail = (email: string, items: CartItem[]) => {
+  window.localStorage.setItem(getCartStorageKey(email), JSON.stringify(items))
+}
+
 function App() {
   const navigate = useNavigate()
   const location = useLocation()
   const showBackgroundVideo = location.pathname === '/'
+  const pageClassName = showBackgroundVideo ? 'page page--with-video' : 'page page--interior'
   const [bagSize, setBagSize] = useState<number>(1)
+  const [customTotalKg, setCustomTotalKg] = useState<number>(1)
+  const [catalogQuantities, setCatalogQuantities] = useState<Record<string, number>>(() => {
+    const initial: Record<string, number> = {}
+    coffeeCatalog.forEach((coffee) => {
+      initial[coffee.id] = 1
+    })
+    return initial
+  })
   const [blendRows, setBlendRows] = useState<BlendRow[]>([
     {
       id: 'row-1',
       coffeeId: coffeeCatalog[0].id,
-      weight: 0.5,
+      percent: 50,
     },
     {
       id: 'row-2',
       coffeeId: coffeeCatalog[1].id,
-      weight: 0.5,
+      percent: 50,
     },
   ])
   const [highlightBlend, setHighlightBlend] = useState(false)
   const blendSectionRef = useRef<HTMLElement | null>(null)
   const [cartItems, setCartItems] = useState<CartItem[]>([])
-  const [orderHistory, setOrderHistory] = useState<OrderRecord[]>([])
+  const [isCartHydrating, setIsCartHydrating] = useState(true)
+  const [orders, setOrders] = useState<OrderRecord[]>([])
+  const [isOrdersLoading, setIsOrdersLoading] = useState(false)
   const [cartPulse, setCartPulse] = useState(false)
   const [blendNotice, setBlendNotice] = useState<BlendNotice | null>(null)
+  const [toastNotice, setToastNotice] = useState<ToastNotice | null>(null)
   const [currentUser, setCurrentUser] = useState<AccountProfile | null>(null)
+  const [authReady, setAuthReady] = useState(false)
+  const [isBootLoading, setIsBootLoading] = useState(() => Boolean(getStoredToken()))
+  const [adminSummary, setAdminSummary] = useState<AdminSummary | null>(null)
+  const [isAdminLoading, setIsAdminLoading] = useState(false)
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup')
   const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' })
   const [authNotice, setAuthNotice] = useState<string>('')
+  const [isAuthSubmitting, setIsAuthSubmitting] = useState(false)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      role: 'assistant',
+      content:
+        'Hi! I’m the Abyssinia Beans assistant. Tell me what you like (sweet, floral, chocolatey, bright) and how you brew, and I’ll recommend a coffee or a custom blend.',
+    },
+  ])
+  const [chatInput, setChatInput] = useState('')
+  const [isChatSending, setIsChatSending] = useState(false)
+  const chatInputRef = useRef<HTMLInputElement | null>(null)
+  const chatScrollRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (isChatOpen) {
+      chatInputRef.current?.focus()
+      requestAnimationFrame(() => {
+        chatScrollRef.current?.scrollTo({ top: chatScrollRef.current.scrollHeight, behavior: 'smooth' })
+      })
+    }
+  }, [isChatOpen])
+
+  useEffect(() => {
+    if (!isChatOpen) return
+    chatScrollRef.current?.scrollTo({ top: chatScrollRef.current.scrollHeight, behavior: 'smooth' })
+  }, [chatMessages, isChatOpen])
   const [pendingCartDraft, setPendingCartDraft] = useState<PendingCartDraft | null>(null)
   const [isRoastPromptOpen, setIsRoastPromptOpen] = useState(false)
   const [backgroundVideoIndex, setBackgroundVideoIndex] = useState(0)
   const backgroundVideoRef = useRef<HTMLVideoElement | null>(null)
   const cartSectionRef = useRef<HTMLElement | null>(null)
   const orderTimers = useRef<Record<string, { roasting?: number; fulfilled?: number }>>({})
+
+  const primaryAdminEmail = adminSummary?.primaryAdminEmail
 
   useEffect(() => {
     const video = backgroundVideoRef.current
@@ -341,12 +441,12 @@ function App() {
     setBackgroundVideoIndex((index) => (index + 1) % backgroundVideos.length)
   }
 
-  const totalWeight = useMemo(
-    () => blendRows.reduce((sum, row) => sum + Number(row.weight || 0), 0),
+  const totalPercent = useMemo(
+    () => blendRows.reduce((sum, row) => sum + Number(row.percent || 0), 0),
     [blendRows],
   )
 
-  const remainingWeight = useMemo(() => bagSize - totalWeight, [bagSize, totalWeight])
+  const remainingPercent = useMemo(() => 100 - totalPercent, [totalPercent])
 
   const cartTotal = useMemo(() => cartItems.reduce((sum, item) => sum + item.price, 0), [cartItems])
 
@@ -374,10 +474,13 @@ function App() {
       if (!coffee) {
         return sum
       }
-      return sum + coffee.pricePerKg * (row.weight || 0)
+      const weightKg = customTotalKg * (Number(row.percent || 0) / 100)
+      return sum + coffee.pricePerKg * weightKg
     }, 0)
     return pricePerKg
-  }, [blendRows])
+  }, [blendRows, customTotalKg])
+
+  const bagQuantity = useMemo(() => computeBagQuantity(customTotalKg, bagSize), [bagSize, customTotalKg])
 
   useEffect(() => {
     if (!highlightBlend) {
@@ -404,44 +507,107 @@ function App() {
   }, [blendNotice])
 
   useEffect(() => {
-    try {
-      const storedAccount = window.localStorage.getItem(ACCOUNT_STORAGE_KEY)
-      const storedSession = window.localStorage.getItem(SESSION_STORAGE_KEY)
-      const adminEmail = window.localStorage.getItem(ADMIN_STORAGE_KEY)
-      if (storedAccount) {
-        const parsed = JSON.parse(storedAccount) as AccountProfile & { role?: 'admin' | 'member' }
-        let role = parsed.role
-        if (role !== 'admin' && role !== 'member') {
-          if (adminEmail) {
-            role = parsed.email === adminEmail ? 'admin' : 'member'
-          } else {
-            role = 'admin'
-            window.localStorage.setItem(ADMIN_STORAGE_KEY, parsed.email)
-          }
-        } else if (!adminEmail && role === 'admin') {
-          window.localStorage.setItem(ADMIN_STORAGE_KEY, parsed.email)
+    if (!toastNotice) {
+      return
+    }
+    const timeout = window.setTimeout(() => setToastNotice(null), 3200)
+    return () => window.clearTimeout(timeout)
+  }, [toastNotice])
+
+  const showToast = (tone: ToastNotice['tone'], message: string, action?: ToastNotice['action']) => {
+    setToastNotice({ tone, message, action })
+  }
+
+  const handleToastAction = (action: NonNullable<ToastNotice['action']>) => {
+    setToastNotice(null)
+    navigate(action.to)
+    if (action.to === '/orders') {
+      window.setTimeout(() => {
+        cartSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 80)
+    }
+  }
+
+  useEffect(() => {
+    const storedToken = getStoredToken()
+    if (!storedToken) {
+      setAuthReady(true)
+      setIsBootLoading(false)
+      return
+    }
+
+    const controller = new AbortController()
+    const signal = controller.signal
+
+    setIsOrdersLoading(true)
+    apiRequest<{ user: AccountProfile }>('/auth/me', { method: 'GET', signal }, storedToken)
+      .then((result) => {
+        setCurrentUser(result.user)
+        window.localStorage.setItem(SESSION_STORAGE_KEY, result.user.email)
+        return apiRequest<{ orders: OrderRecord[] }>(
+          '/orders/my',
+          { method: 'GET', signal },
+          storedToken,
+        )
+      })
+      .then((result) => {
+        setOrders(result.orders)
+      })
+      .catch((error: unknown) => {
+        if (signal.aborted) {
+          return
         }
 
-        const normalised: AccountProfile = {
-          name: parsed.name,
-          email: parsed.email,
-          password: parsed.password,
-          createdAt: parsed.createdAt ?? Date.now(),
-          role,
+        const maybeError = error as ApiError
+        const status = maybeError?.status
+        const message = maybeError instanceof Error ? maybeError.message : String(error)
+
+        // Only clear the token when the server confirms it's invalid/expired.
+        if (status === 401 || status === 403) {
+          window.localStorage.removeItem(TOKEN_STORAGE_KEY)
+          window.localStorage.removeItem(SESSION_STORAGE_KEY)
+          setCurrentUser(null)
+          setOrders([])
+          setIsOrdersLoading(false)
+          return
         }
 
-        if (parsed.role !== role) {
-          window.localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(normalised))
+        // Network/server hiccup: keep token so a later refresh can recover.
+        console.warn('Session restore failed (keeping token):', message)
+        setCurrentUser(null)
+        setOrders([])
+      })
+      .finally(() => {
+        if (!signal.aborted) {
+          setAuthReady(true)
+          setIsBootLoading(false)
+          setIsOrdersLoading(false)
         }
+      })
 
-        if (storedSession && normalised.email === storedSession) {
-          setCurrentUser(normalised)
-        }
-      }
-    } catch (error) {
-      console.error('Unable to restore account session', error)
+    return () => {
+      controller.abort()
     }
   }, [])
+
+  useEffect(() => {
+    // Load/save cart per user.
+    if (!currentUser) {
+      setIsCartHydrating(false)
+      setCartItems([])
+      return
+    }
+    setIsCartHydrating(true)
+    setCartItems(loadCartForEmail(currentUser.email))
+    setIsCartHydrating(false)
+  }, [currentUser?.email])
+
+  useEffect(() => {
+    if (!currentUser) {
+      return
+    }
+    saveCartForEmail(currentUser.email, cartItems)
+  }, [cartItems, currentUser])
 
   useEffect(() => {
     if (!authNotice) {
@@ -454,8 +620,30 @@ function App() {
   useEffect(() => {
     if (currentUser) {
       window.localStorage.setItem(SESSION_STORAGE_KEY, currentUser.email)
+      const token = getStoredToken()
+      if (token) {
+        setIsOrdersLoading(true)
+        apiRequest<{ orders: OrderRecord[] }>('/orders/my', { method: 'GET' }, token)
+          .then((result) => setOrders(result.orders))
+          .catch(() => setOrders([]))
+          .finally(() => setIsOrdersLoading(false))
+
+        if (currentUser.role === 'admin') {
+          setIsAdminLoading(true)
+          apiRequest<AdminSummary>('/admin/users', { method: 'GET' }, token)
+            .then((result) => setAdminSummary(result))
+            .catch(() => setAdminSummary(null))
+            .finally(() => setIsAdminLoading(false))
+        } else {
+          setIsAdminLoading(false)
+          setAdminSummary(null)
+        }
+      }
     } else {
-      window.localStorage.removeItem(SESSION_STORAGE_KEY)
+      setIsOrdersLoading(false)
+      setIsAdminLoading(false)
+      setOrders([])
+      setAdminSummary(null)
     }
   }, [currentUser])
 
@@ -484,7 +672,7 @@ function App() {
       {
         id: `row-${rows.length + 1}`,
         coffeeId: coffeeCatalog[rows.length % coffeeCatalog.length].id,
-        weight: 0,
+        percent: 0,
       },
     ])
   }
@@ -494,6 +682,7 @@ function App() {
   }
 
   const openAuthModal = (mode: 'login' | 'signup', message?: string) => {
+    setIsAuthSubmitting(false)
     setAuthMode(mode)
     setAuthForm({ name: '', email: '', password: '' })
     setAuthNotice(message ?? '')
@@ -501,6 +690,9 @@ function App() {
   }
 
   const closeAuthModal = () => {
+    if (isAuthSubmitting) {
+      return
+    }
     setIsAuthModalOpen(false)
     setAuthNotice('')
   }
@@ -511,7 +703,11 @@ function App() {
 
   const handleAuthSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const trimmedEmail = authForm.email.trim().toLowerCase()
+    if (isAuthSubmitting) {
+      return
+    }
+
+    const trimmedEmail = normaliseEmail(authForm.email)
     const trimmedName = authForm.name.trim()
     const password = authForm.password.trim()
 
@@ -520,109 +716,71 @@ function App() {
       return
     }
 
-    try {
-      const storedAccount = window.localStorage.getItem(ACCOUNT_STORAGE_KEY)
-
-      if (authMode === 'signup') {
-        if (!trimmedName) {
-          setAuthNotice('Add your name so we can personalize your experience.')
-          return
-        }
-        if (password.length < 6) {
-          setAuthNotice('Choose a password with at least 6 characters.')
-          return
-        }
-        if (storedAccount) {
-          const parsed: AccountProfile = JSON.parse(storedAccount)
-          if (parsed.email === trimmedEmail) {
-            setAuthNotice('An account already exists for this email. Try logging in instead.')
-            return
-          }
-        }
-
-        const existingAdminEmail = window.localStorage.getItem(ADMIN_STORAGE_KEY)
-        const resolvedRole: 'admin' | 'member' = existingAdminEmail
-          ? trimmedEmail === existingAdminEmail
-            ? 'admin'
-            : 'member'
-          : 'admin'
-
-        if (!existingAdminEmail) {
-          window.localStorage.setItem(ADMIN_STORAGE_KEY, trimmedEmail)
-        }
-
-        const account: AccountProfile = {
-          name: trimmedName,
-          email: trimmedEmail,
-          password,
-          createdAt: Date.now(),
-          role: resolvedRole,
-        }
-
-        window.localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(account))
-        setCurrentUser(account)
-        setAuthNotice('Account created. You are signed in!')
-        setTimeout(() => {
-          closeAuthModal()
-        }, 480)
-      } else {
-        if (!storedAccount) {
-          setAuthNotice('No account found yet. Create one to get started.')
-          return
-        }
-        const parsed = JSON.parse(storedAccount) as AccountProfile & { role?: 'admin' | 'member' }
-        if (parsed.email !== trimmedEmail || parsed.password !== password) {
-          setAuthNotice('Incorrect email or password.')
-          return
-        }
-        const adminEmail = window.localStorage.getItem(ADMIN_STORAGE_KEY)
-        let role = parsed.role
-        if (role !== 'admin' && role !== 'member') {
-          if (adminEmail) {
-            role = parsed.email === adminEmail ? 'admin' : 'member'
-          } else {
-            role = 'admin'
-            window.localStorage.setItem(ADMIN_STORAGE_KEY, parsed.email)
-          }
-        } else if (!adminEmail && role === 'admin') {
-          window.localStorage.setItem(ADMIN_STORAGE_KEY, parsed.email)
-        }
-
-        const normalised: AccountProfile = {
-          name: parsed.name,
-          email: parsed.email,
-          password: parsed.password,
-          createdAt: parsed.createdAt ?? Date.now(),
-          role,
-        }
-
-        if (parsed.role !== role) {
-          window.localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(normalised))
-        }
-
-        setCurrentUser(normalised)
-        setAuthNotice('Welcome back!')
-        setTimeout(() => {
-          closeAuthModal()
-        }, 480)
-      }
-
-      setAuthForm({ name: '', email: '', password: '' })
-    } catch (error) {
-      console.error('Auth handling failed', error)
-      setAuthNotice('Something went wrong. Please try again.')
+    if (authMode === 'signup' && !trimmedName) {
+      setAuthNotice('Add your name so we can personalize your experience.')
+      return
     }
+    if (authMode === 'signup' && password.length < 6) {
+      setAuthNotice('Choose a password with at least 6 characters.')
+      return
+    }
+
+    const path = authMode === 'signup' ? '/auth/signup' : '/auth/login'
+    const payload =
+      authMode === 'signup'
+        ? { name: trimmedName, email: trimmedEmail, password }
+        : { email: trimmedEmail, password }
+
+    setIsAuthSubmitting(true)
+
+    apiRequest<{ user: AccountProfile; token: string }>(
+      path,
+      {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      },
+      null,
+    )
+      .then(async (result) => {
+        window.localStorage.setItem(TOKEN_STORAGE_KEY, result.token)
+        window.localStorage.setItem(SESSION_STORAGE_KEY, result.user.email)
+        setCurrentUser(result.user)
+        setIsOrdersLoading(true)
+        const ordersResult = await apiRequest<{ orders: OrderRecord[] }>(
+          '/orders/my',
+          { method: 'GET' },
+          result.token,
+        )
+        setOrders(ordersResult.orders)
+        setAuthNotice(authMode === 'signup' ? 'Account created. You are signed in!' : 'Welcome back!')
+        showToast('positive', authMode === 'signup' ? 'Account created.' : 'Logged in.')
+        window.setTimeout(() => {
+          closeAuthModal()
+        }, 480)
+      })
+      .catch((error: unknown) => {
+        const message = error instanceof Error ? error.message : 'Something went wrong. Please try again.'
+        setAuthNotice(message)
+        showToast('warning', message)
+      })
+      .finally(() => {
+        setIsAuthSubmitting(false)
+        setIsOrdersLoading(false)
+        setAuthForm({ name: '', email: '', password: '' })
+      })
   }
 
   const handleSignOut = () => {
     window.localStorage.removeItem(SESSION_STORAGE_KEY)
+    window.localStorage.removeItem(TOKEN_STORAGE_KEY)
     setCurrentUser(null)
     setAuthForm({ name: '', email: '', password: '' })
     setAuthNotice('')
     setIsAuthModalOpen(false)
+    showToast('positive', 'Signed out.')
   }
 
-  const handleQuickAdd = (coffeeId: string) => {
+  const handleQuickAdd = (coffeeId: string, selectedBagSize: number) => {
     if (isRoastPromptOpen) {
       return
     }
@@ -637,59 +795,36 @@ function App() {
       {
         coffeeId,
         name: coffee?.name ?? 'Selected lot',
-        weight: Number(bagSize.toFixed(2)),
+        weight: Number(selectedBagSize.toFixed(2)),
       },
     ]
-    const basePrice = (coffee?.pricePerKg ?? 0) * bagSize
+    const basePrice = (coffee?.pricePerKg ?? 0) * selectedBagSize
 
     setPendingCartDraft({
       id: `cart-${timestamp}`,
       createdAt: timestamp,
       blend,
       basePrice: Number(basePrice.toFixed(2)),
-      bagSize,
+      bagSize: selectedBagSize,
+      quantity: 1,
       source: 'catalog',
     })
     setIsRoastPromptOpen(true)
     setBlendNotice({
       tone: 'positive',
-      message: `Choose how we should prepare ${coffee?.name ?? 'this coffee'} before it joins your cart.`,
+      message: `Choose how we should prepare ${coffee?.name ?? 'this coffee'} (${formatKg(selectedBagSize)}) before it joins your cart.`,
     })
-  }
-
-  const navigateToOrders = () => {
-    navigate('/orders')
-    window.setTimeout(() => {
-      cartSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 60)
   }
 
   const navigateToBlendLab = () => {
     setHighlightBlend(true)
     navigate('/coffee')
     window.setTimeout(() => {
-      document.getElementById('blend-lab')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      document.getElementById('custom-order')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 80)
   }
 
-  const scheduleOrderProgress = (orderId: string) => {
-    const roastingTimer = window.setTimeout(() => {
-      setOrderHistory((orders) =>
-        orders.map((order) => (order.id === orderId ? { ...order, status: 'Roasting' } : order)),
-      )
-    }, 1600)
-
-    const fulfilledTimer = window.setTimeout(() => {
-      setOrderHistory((orders) =>
-        orders.map((order) =>
-          order.id === orderId ? { ...order, status: 'Fulfilled', fulfilledAt: Date.now() } : order,
-        ),
-      )
-      delete orderTimers.current[orderId]
-    }, 3600)
-
-    orderTimers.current[orderId] = { roasting: roastingTimer, fulfilled: fulfilledTimer }
-  }
+  // Order statuses are computed + persisted server-side.
 
   const handleAddToCart = () => {
     if (isRoastPromptOpen) {
@@ -699,38 +834,54 @@ function App() {
       openAuthModal('signup', 'Create an account or log in to save blends to your cart.')
       return
     }
-    if (totalWeight === 0) {
+    if (totalPercent === 0) {
       setHighlightBlend(true)
-      setBlendNotice({ tone: 'warning', message: 'Start by allocating coffees to your bag.' })
+      setBlendNotice({ tone: 'warning', message: 'Start by allocating percentages to your bag.' })
       return
     }
 
-    if (remainingWeight > 0.01) {
+    if (remainingPercent > 0.01) {
       setHighlightBlend(true)
-      setBlendNotice({ tone: 'warning', message: 'Allocate the full bag weight before continuing.' })
+      setBlendNotice({ tone: 'warning', message: 'Allocate 100% of the blend before continuing.' })
       return
     }
 
-    if (remainingWeight < -0.01) {
+    if (remainingPercent < -0.01) {
       setHighlightBlend(true)
-      setBlendNotice({ tone: 'warning', message: 'Reduce weights so the blend fits your bag size.' })
+      setBlendNotice({ tone: 'warning', message: 'Reduce percentages so the blend totals 100%.' })
+      return
+    }
+
+    if (!Number.isFinite(customTotalKg) || customTotalKg <= 0) {
+      setHighlightBlend(true)
+      setBlendNotice({ tone: 'warning', message: 'Choose how many kilograms you want to order.' })
+      return
+    }
+
+    if (!bagQuantity.isExact || bagQuantity.exactCount <= 0) {
+      setHighlightBlend(true)
+      setBlendNotice({
+        tone: 'warning',
+        message: `The math won’t add up for ${formatKg(customTotalKg)} using ${formatKg(bagSize)} bags. Try ${formatKg(bagQuantity.nearestDownKg)} or ${formatKg(bagQuantity.nearestUpKg)}.`,
+      })
       return
     }
 
     const timestamp = Date.now()
     const blend: CartBlend[] = blendRows
-      .filter((row) => row.weight > 0)
+      .filter((row) => row.percent > 0)
       .map((row) => {
         const coffee = coffeeCatalog.find((item) => item.id === row.coffeeId)
+        const weightKg = bagSize * (Number(row.percent || 0) / 100)
         return {
           coffeeId: row.coffeeId,
           name: coffee?.name ?? 'Selected lot',
-          weight: Number(row.weight.toFixed(2)),
+          weight: Number(weightKg.toFixed(2)),
         }
       })
 
     if (!blend.length) {
-      setBlendNotice({ tone: 'warning', message: 'Allocate weights before adding your blend.' })
+      setBlendNotice({ tone: 'warning', message: 'Allocate percentages before adding your blend.' })
       return
     }
 
@@ -748,13 +899,14 @@ function App() {
       blend,
       basePrice: Number(basePrice.toFixed(2)),
       bagSize,
+      quantity: bagQuantity.exactCount,
       source: 'custom',
     })
 
     setIsRoastPromptOpen(true)
     setBlendNotice({
       tone: 'positive',
-      message: 'Choose how you want your custom blend prepared.',
+      message: `${formatKg(customTotalKg)} = ${bagQuantity.exactCount} × ${formatKg(bagSize)} bags. Choose how you want them prepared.`,
     })
   }
 
@@ -764,35 +916,36 @@ function App() {
     }
 
     const profile = roastProfiles.find((item) => item.id === roastId)
-    const price =
-      pendingCartDraft.basePrice + (profile?.extraCostPerKg ?? 0) * pendingCartDraft.bagSize
-
-    const cartItem: CartItem = {
-      id: pendingCartDraft.id,
-      createdAt: pendingCartDraft.createdAt,
+    const unitPrice = pendingCartDraft.basePrice + (profile?.extraCostPerKg ?? 0) * pendingCartDraft.bagSize
+    const quantity = Math.max(1, Math.trunc(pendingCartDraft.quantity || 1))
+    const itemsToAdd: CartItem[] = Array.from({ length: quantity }, (_, index) => ({
+      id: `${pendingCartDraft.id}-${index + 1}`,
+      createdAt: pendingCartDraft.createdAt + index,
       roastId,
       roastLabel: profile?.label ?? 'Selected roast',
       bagSize: pendingCartDraft.bagSize,
       blend: pendingCartDraft.blend,
-      price: Number(price.toFixed(2)),
-    }
+      price: Number(unitPrice.toFixed(2)),
+    }))
 
-    setCartItems((items) => [cartItem, ...items])
+    setCartItems((items) => [...itemsToAdd, ...items])
     setPendingCartDraft(null)
     setIsRoastPromptOpen(false)
-    setBlendNotice({ tone: 'positive', message: 'Blend added to cart. Ready when you are.' })
+    setBlendNotice({ tone: 'positive', message: 'Added to cart — keep browsing or add another.' })
+    showToast('positive', 'Added to cart.', { label: 'View cart', to: '/orders' })
     setCartPulse(true)
-    navigateToOrders()
   }
 
   const cancelRoastSelection = () => {
     setPendingCartDraft(null)
     setIsRoastPromptOpen(false)
     setBlendNotice({ tone: 'warning', message: 'Roast selection cancelled. Blend not added.' })
+    showToast('warning', 'Cancelled — not added to cart.')
   }
 
   const handleRemoveCartItem = (id: string) => {
     setCartItems((items) => items.filter((item) => item.id !== id))
+    showToast('positive', 'Removed from cart.')
   }
 
   const handleCheckout = () => {
@@ -805,20 +958,32 @@ function App() {
       return
     }
 
-    const timestamp = Date.now()
-    const newOrders: OrderRecord[] = cartItems.map((item, index) => ({
-      ...item,
-      id: `order-${timestamp}-${index}`,
-      reference: `ABY-${String(timestamp).slice(-6)}-${index + 1}`,
-      status: 'Queued',
-    }))
+    const token = getStoredToken()
+    if (!token) {
+      openAuthModal('login', 'Log in to send your cart to the roastery queue.')
+      return
+    }
 
-    setOrderHistory((orders) => [...newOrders, ...orders])
-    setCartItems([])
-    setBlendNotice({ tone: 'positive', message: 'Thanks! Your blends are queued for roasting.' })
-    cartSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
-    newOrders.forEach((order) => scheduleOrderProgress(order.id))
+    apiRequest<{ orders: OrderRecord[] }>(
+      '/orders/checkout',
+      {
+        method: 'POST',
+        body: JSON.stringify({ cartItems }),
+      },
+      token,
+    )
+      .then((result) => {
+        setOrders((existing) => [...result.orders, ...existing])
+        setCartItems([])
+        setBlendNotice({ tone: 'positive', message: 'Thanks! Your blends are queued for roasting.' })
+        showToast('positive', 'Order placed. Roastery queue started.')
+        cartSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+      .catch((error: unknown) => {
+        const message = error instanceof Error ? error.message : 'Checkout failed. Please try again.'
+        setBlendNotice({ tone: 'warning', message })
+        showToast('warning', message)
+      })
   }
 
   const renderTopNav = () => (
@@ -826,34 +991,188 @@ function App() {
       <Link className="top-nav__brand" to="/">
         {companyName}
       </Link>
+      <button
+        type="button"
+        className="top-nav__toggle"
+        aria-label={isMobileNavOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isMobileNavOpen}
+        aria-controls="top-nav-menu"
+        onClick={() => setIsMobileNavOpen((open) => !open)}
+      >
+        <span className="top-nav__toggleBars" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+      </button>
       <div className="top-nav__actions">
-        <Link className="top-nav__cart" to="/coffee">
+        <div
+          id="top-nav-menu"
+          className={`top-nav__menu ${isMobileNavOpen ? 'top-nav__menu--open' : ''}`}
+        >
+          <Link className="top-nav__cart" to="/coffee" onClick={() => setIsMobileNavOpen(false)}>
           Coffees
-        </Link>
-        {currentUser ? (
-          <div className="top-nav__user">
-            <span>
-              Hi, {currentUser.name.split(' ')[0] || currentUser.name}
-              {currentUser.role === 'admin' ? ' (Admin)' : ''}
-            </span>
-            <button type="button" onClick={handleSignOut}>
-              Sign out
-            </button>
-          </div>
-        ) : (
-          <div className="top-nav__user">
-            <button type="button" onClick={() => openAuthModal('login')}>
-              Log in
-            </button>
-            <button type="button" onClick={() => openAuthModal('signup')}>
-              Create account
-            </button>
-          </div>
-        )}
-        <Link className="top-nav__cart" to="/orders">
+          </Link>
+          {currentUser?.role === 'admin' ? (
+            <Link className="top-nav__cart" to="/admin" onClick={() => setIsMobileNavOpen(false)}>
+              Admin
+            </Link>
+          ) : null}
+          {currentUser ? (
+            <div className="top-nav__user">
+              <span>
+                Hi, {currentUser.name.split(' ')[0] || currentUser.name}
+                {currentUser.role === 'admin' ? ' (Admin)' : ''}
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileNavOpen(false)
+                  handleSignOut()
+                }}
+              >
+                Sign out
+              </button>
+            </div>
+          ) : (
+            <div className="top-nav__user">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileNavOpen(false)
+                  openAuthModal('login')
+                }}
+              >
+                Log in
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileNavOpen(false)
+                  openAuthModal('signup')
+                }}
+              >
+                Create account
+              </button>
+            </div>
+          )}
+          <Link className="top-nav__cart" to="/orders" onClick={() => setIsMobileNavOpen(false)}>
           Cart ({cartItems.length})
-        </Link>
+          </Link>
+        </div>
       </div>
+    </div>
+  )
+
+  const renderSiteHeader = () => (
+    <header className="site-header">
+      {renderTopNav()}
+    </header>
+  )
+
+  const renderSiteFooter = () => (
+    <footer className="footer site-footer">
+      <p>
+        © {new Date().getFullYear()} {companyName} · Crafted in Ethiopia · Powered by traceable supply.
+      </p>
+    </footer>
+  )
+
+  const handleSendChat = async () => {
+    const text = chatInput.trim()
+    if (!text || isChatSending) return
+
+    const nextMessages: ChatMessage[] = [...chatMessages, { role: 'user', content: text }]
+    setChatMessages(nextMessages)
+    setChatInput('')
+    setIsChatSending(true)
+
+    try {
+      const result = await apiRequest<{ reply: string }>('/chat', {
+        method: 'POST',
+        body: JSON.stringify({ message: text }),
+      })
+
+      setChatMessages((existing) => [...existing, { role: 'assistant', content: result.reply }])
+    } catch (error: unknown) {
+      const raw = error instanceof Error ? error.message : 'Chat failed. Please try again.'
+      const status = (error as ApiError | null)?.status
+      const message =
+        raw === 'Failed to fetch'
+          ? 'Chat service is unreachable. Start the API with npm run dev:api (or npm run dev:all), then refresh.'
+          : status === 429
+            ? 'OpenAI is rejecting requests due to quota/billing. Enable billing (or add credits) for your OpenAI project, then try again.'
+            : status === 401
+              ? 'The server OpenAI key is invalid. Re-check OPENAI_API_KEY in your server environment and restart the API.'
+              : raw
+      setChatMessages((existing) => [
+        ...existing,
+        {
+          role: 'assistant',
+          content: `Sorry — I couldn’t reach the chat service. ${message}`,
+        },
+      ])
+    } finally {
+      setIsChatSending(false)
+      requestAnimationFrame(() => chatInputRef.current?.focus())
+    }
+  }
+
+  const renderChatbot = () => (
+    <div className={`chatbot ${isChatOpen ? 'chatbot--open' : ''}`}>
+      <button
+        type="button"
+        className="chatbot__fab"
+        onClick={() => setIsChatOpen((open) => !open)}
+        aria-expanded={isChatOpen}
+        aria-controls="chatbot-panel"
+      >
+        {isChatOpen ? 'Close chat' : 'Chat'}
+      </button>
+      {isChatOpen ? (
+        <div className="chatbot__panel" id="chatbot-panel" role="dialog" aria-label="Chat with Abyssinia Beans">
+          <div className="chatbot__header">
+            <div className="chatbot__title">Abyssinia Beans chat</div>
+            <button type="button" className="chatbot__close" onClick={() => setIsChatOpen(false)}>
+              Close
+            </button>
+          </div>
+          <div className="chatbot__messages" ref={chatScrollRef}>
+            {chatMessages.map((m, idx) => (
+              <div
+                key={`${m.role}-${idx}`}
+                className={`chatbot__message chatbot__message--${m.role}`}
+              >
+                <div className="chatbot__bubble">{m.content}</div>
+              </div>
+            ))}
+            {isChatSending ? (
+              <div className="chatbot__message chatbot__message--assistant">
+                <div className="chatbot__bubble">Typing…</div>
+              </div>
+            ) : null}
+          </div>
+          <form
+            className="chatbot__composer"
+            onSubmit={(e) => {
+              e.preventDefault()
+              void handleSendChat()
+            }}
+          >
+            <input
+              ref={chatInputRef}
+              className="chatbot__input"
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              placeholder="Ask about coffees, blends, roast & grind…"
+              aria-label="Message"
+            />
+            <button className="chatbot__send" type="submit" disabled={!chatInput.trim() || isChatSending}>
+              Send
+            </button>
+          </form>
+        </div>
+      ) : null}
     </div>
   )
 
@@ -877,26 +1196,31 @@ function App() {
           </video>
         </div>
       ) : null}
-      <div className={showBackgroundVideo ? 'page page--with-video' : 'page'}>
+      <div className={pageClassName}>
+        {renderSiteHeader()}
         <Routes>
           <Route
             path="/"
             element={
               <>
                 <header className="hero">
-                  {renderTopNav()}
                   <div className="hero__badge">From farm to cup</div>
                   <h1 className="hero__title">Abyssinia coffee</h1>
                   <p className="hero__subtitle">
-                    Learn what makes Ethiopian coffee unique—how it is collected, how we roast it, and how we
-                    grind it. Then head to the coffees page to browse lots and build your own blend.
+                    Discover what makes Ethiopian coffee unique—from careful cherry selection to roast profiles
+                    tuned for sweetness and clarity. We work with premium lots, strict sorting, and small-batch
+                    roasting standards so every bag tastes clean, vibrant, and consistent.
+                    <br />
+                    <br />
+                    Head to the coffees page to browse micro-lots, build a custom blend by weight, and choose it
+                    as-is, roasted, or roasted & ground.
                   </p>
                   <div className="hero__actions">
                     <Link className="hero__cta" to="/coffee">
                       Browse coffees
                     </Link>
                     <Link className="hero__ghost" to="/coffee">
-                      Build a custom blend
+                      Place a custom order
                     </Link>
                     <Link className="hero__ghost hero__ghost--minimal" to="/orders">
                       Review cart
@@ -908,26 +1232,27 @@ function App() {
                   <div className="section__header">
                     <h2>Types of coffee available</h2>
                     <p>
-                      We offer traceable Ethiopian coffees processed as Natural, Washed, Honey, and seasonal
-                      fermentation lots—each changing the sweetness, acidity, and aroma in the cup.
+                      Browse our Ethiopian lineup featuring Yirgacheffe, Sidamo, Guji, Harrar, Limu, Bench Maji,
+                      and Kaffa. You'll find lots prepared as Washed, Natural, and traditional Forest Coffee—each
+                      highlighting a different balance of florals, fruit, and sweetness.
                     </p>
                   </div>
                   <div className="details-grid">
                     <div className="details-card">
                       <h3>Natural</h3>
-                      <p>Whole cherries dried on raised beds for jammy fruit and creamy body.</p>
+                      <p>Whole cherries dried for ripe fruit sweetness and a round, fuller body.</p>
                     </div>
                     <div className="details-card">
                       <h3>Washed</h3>
-                      <p>Clean fermentation and rinsing for crisp florals and tea-like structure.</p>
+                      <p>Clean fermentation and rinsing for crisp florals, citrus lift, and tea-like clarity.</p>
                     </div>
                     <div className="details-card">
-                      <h3>Honey</h3>
-                      <p>Mucilage left on during drying for layered sweetness and bright finish.</p>
+                      <h3>Forest coffee</h3>
+                      <p>Traditionally collected from forest systems for a distinctive, heritage-driven profile.</p>
                     </div>
                     <div className="details-card">
-                      <h3>Anaerobic / Experimental</h3>
-                      <p>Controlled fermentations that amplify fruit complexity while staying balanced.</p>
+                      <h3>Single origins</h3>
+                      <p>Compare regions side-by-side: Yirgacheffe, Sidamo, Guji, Harrar, Limu, Bench Maji, and Kaffa.</p>
                     </div>
                   </div>
                 </section>
@@ -936,8 +1261,9 @@ function App() {
                   <div className="section__header">
                     <h2>How it is collected</h2>
                     <p>
-                      Our lots are sourced from smallholders and washing stations. Cherries are handpicked at
-                      peak ripeness, sorted, and processed the same day to preserve clarity.
+                      Our lots come from smallholders and washing stations across Ethiopia. Cherries are
+                      handpicked at peak ripeness, floated and sorted, then processed the same day to preserve
+                      sweetness, florals, and clean acidity.
                     </p>
                   </div>
                 </section>
@@ -946,8 +1272,13 @@ function App() {
                   <div className="section__header">
                     <h2>How it is roasted</h2>
                     <p>
-                      We roast to order and cool quickly to lock in aromatics. Different roast profiles are used
-                      for espresso and filter to highlight sweetness and origin character.
+                      We roast to order and cool quickly to lock in aromatics. Every batch is handled with care—
+                      consistent charge temperatures, tracked development, and fast cooling—so the cup stays sweet
+                      and expressive.
+                      <br />
+                      <br />
+                      Profiles are adjusted for espresso or filter so you get balanced sweetness, sparkling acidity,
+                      and a finish that stays clean.
                     </p>
                   </div>
                 </section>
@@ -956,8 +1287,8 @@ function App() {
                   <div className="section__header">
                     <h2>How it is ground</h2>
                     <p>
-                      Choose whole bean or roasted & ground. Grinding is matched to your brew method so the
-                      extraction is consistent and the cup stays sweet.
+                      Choose whole bean or roasted & ground. If you pick ground, we match it to your brew method
+                      (espresso, pour-over, French press) so extraction stays even and the cup stays sweet.
                     </p>
                   </div>
                 </section>
@@ -991,10 +1322,6 @@ function App() {
                     </div>
                   </div>
                 </section>
-
-                <footer className="footer">
-                  <p>© {new Date().getFullYear()} {companyName} · Crafted in Ethiopia · Powered by traceable supply.</p>
-                </footer>
               </>
             }
           />
@@ -1003,23 +1330,7 @@ function App() {
             path="/coffee"
             element={
               <>
-                <div className="orders-header">
-                  {renderTopNav()}
-                  <div className="orders-header__intro">
-                    <div className="hero__badge">Browse & build</div>
-                    <h1 className="hero__title">Coffees & custom blends</h1>
-                    <p className="hero__subtitle">
-                      Explore our lineup, then build a custom bag by weight. When you finish, choose whether you
-                      want it as-is, roasted, or roasted & ground.
-                    </p>
-                  </div>
-                </div>
-
                 <section className="section" id="catalog">
-                  <div className="section__header">
-                    <h2>Single origin lineup</h2>
-                    <p>Choose a lot and add it to your cart with your preferred preparation.</p>
-                  </div>
                   <div className="catalog">
                     {coffeeCatalog.map((coffee) => (
                       <article className="coffee-card" key={coffee.id}>
@@ -1047,39 +1358,89 @@ function App() {
                             <span className="coffee-card__altitude">{coffee.altitude}</span>
                             <span className="coffee-card__price">{formatCurrency(coffee.pricePerKg)} / kg</span>
                           </div>
-                          <button
-                            className="coffee-card__action"
-                            type="button"
-                            onClick={() => handleQuickAdd(coffee.id)}
-                          >
-                            Add to cart
-                          </button>
+                          <div className="coffee-card__buy">
+                            <label className="coffee-card__qty" htmlFor={`qty-${coffee.id}`}>
+                              <span>Quantity</span>
+                              <select
+                                id={`qty-${coffee.id}`}
+                                value={catalogQuantities[coffee.id] ?? 1}
+                                onChange={(event) =>
+                                  setCatalogQuantities((current) => ({
+                                    ...current,
+                                    [coffee.id]: Number.parseFloat(event.target.value) || 1,
+                                  }))
+                                }
+                              >
+                                {bagSizeOptions.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </label>
+                            <button
+                              className="coffee-card__action"
+                              type="button"
+                              onClick={() => handleQuickAdd(coffee.id, catalogQuantities[coffee.id] ?? 1)}
+                            >
+                              Add to cart
+                            </button>
+                          </div>
                         </div>
                       </article>
                     ))}
                   </div>
                 </section>
 
-                <section className="section" id="blend-lab" ref={blendSectionRef}>
+                <section className="section" id="custom-order" ref={blendSectionRef}>
                   <div className="section__header">
-                    <h2>Custom blend lab</h2>
-                    <p>Design blends by weight. When you’re done, we’ll ask how you want it prepared.</p>
+                    <h2>Custom order</h2>
+                    <p>Build your order by percentage, choose total kilograms and a bag size, and we’ll tell you how many bags that makes.</p>
                   </div>
                   <div className={`blend-card ${highlightBlend ? 'blend-card--pulse' : ''}`}>
                     <div className="blend-card__row">
-                      <label htmlFor="bagSize">Bag size</label>
-                      <div className="bag-size-select">
-                        {bagSizeOptions.map((option) => (
-                          <button
-                            key={option.value}
-                            className={`bag-size-btn ${bagSize === option.value ? 'bag-size-btn--active' : ''}`}
-                            type="button"
-                            onClick={() => setBagSize(option.value)}
-                          >
-                            {option.label}
-                          </button>
-                        ))}
+                      <label>Order size</label>
+                      <div className="blend-row__field">
+                        <label htmlFor="customTotalKg">Total (kg)</label>
+                        <input
+                          id="customTotalKg"
+                          type="number"
+                          min={0.25}
+                          step={0.25}
+                          value={Number.isFinite(customTotalKg) ? customTotalKg : 1}
+                          onChange={(event) => {
+                            const next = Number.parseFloat(event.target.value)
+                            setCustomTotalKg(Number.isFinite(next) && next > 0 ? next : 1)
+                          }}
+                          inputMode="decimal"
+                        />
                       </div>
+                      <div className="blend-row__field">
+                        <label htmlFor="customBagSize">Bag size</label>
+                        <select
+                          id="customBagSize"
+                          value={Number.isFinite(bagSize) ? bagSize : 1}
+                          onChange={(event) => {
+                            const next = Number.parseFloat(event.target.value)
+                            setBagSize(Number.isFinite(next) && next > 0 ? next : 1)
+                          }}
+                        >
+                          {bagSizeOptions.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      {bagQuantity.isExact ? (
+                        <div className="blend-card__notice">
+                          {formatKg(customTotalKg)} = {bagQuantity.exactCount} × {formatKg(bagSize)} bags
+                        </div>
+                      ) : (
+                        <div className="blend-card__notice blend-card__notice--warning">
+                          The math won’t add up. Try {formatKg(bagQuantity.nearestDownKg)} or {formatKg(bagQuantity.nearestUpKg)}.
+                        </div>
+                      )}
                     </div>
 
                     <div className="blend-grid">
@@ -1100,17 +1461,17 @@ function App() {
                             </select>
                           </div>
                           <div className="blend-row__field">
-                            <label htmlFor={`weight-${row.id}`}>Weight (kg)</label>
+                            <label htmlFor={`percent-${row.id}`}>Percent (%)</label>
                             <input
-                              id={`weight-${row.id}`}
+                              id={`percent-${row.id}`}
                               type="number"
                               min={0}
-                              max={bagSize}
-                              step={0.1}
-                              value={row.weight}
+                              max={100}
+                              step={1}
+                              value={row.percent}
                               onChange={(event) =>
                                 handleBlendChange(row.id, {
-                                  weight: Number.parseFloat(event.target.value) || 0,
+                                  percent: Number.parseFloat(event.target.value) || 0,
                                 })
                               }
                             />
@@ -1133,15 +1494,17 @@ function App() {
                           onClick={handleAddToCart}
                           disabled={isRoastPromptOpen}
                         >
-                          Finish & choose preparation
+                          Finish custom order
                         </button>
                       </div>
                       <div className="blend-card__summary">
-                        <span>Total weight: {totalWeight.toFixed(2)} kg</span>
+                        <span>Bag size: {formatKg(bagSize)}</span>
+                        <span>Total order: {formatKg(customTotalKg)}</span>
+                        <span>Total: {totalPercent.toFixed(0)}%</span>
                         <span>
-                          {remainingWeight >= 0
-                            ? `Remaining: ${remainingWeight.toFixed(2)} kg`
-                            : `Overweight by ${Math.abs(remainingWeight).toFixed(2)} kg`}
+                          {remainingPercent >= 0
+                            ? `Remaining: ${remainingPercent.toFixed(0)}%`
+                            : `Over by ${Math.abs(remainingPercent).toFixed(0)}%`}
                         </span>
                         <span>Estimated base: {formatCurrency(estimatedPrice)}</span>
                         <span>Preparation: choose after finishing</span>
@@ -1155,9 +1518,6 @@ function App() {
                   </div>
                 </section>
 
-                <footer className="footer">
-                  <p>© {new Date().getFullYear()} {companyName} · Crafted in Ethiopia · Powered by traceable supply.</p>
-                </footer>
               </>
             }
           />
@@ -1167,7 +1527,6 @@ function App() {
             element={
               <>
                 <div className="orders-header">
-                  {renderTopNav()}
                   <div className="orders-header__intro">
                     <div className="hero__badge">Cart & orders</div>
                     <h1 className="hero__title">Cart and order history</h1>
@@ -1179,7 +1538,7 @@ function App() {
                           Back to coffees
                         </Link>
                       <button className="hero__ghost" type="button" onClick={navigateToBlendLab}>
-                        Build a custom bag
+                        Custom order
                       </button>
                     </div>
                   </div>
@@ -1191,7 +1550,9 @@ function App() {
                     <p>Stage your custom bags before sending them to the roastery queue.</p>
                   </div>
                   <div className={`cart-panel ${cartPulse ? 'cart-panel--pulse' : ''}`}>
-                    {cartItems.length === 0 ? (
+                    {isCartHydrating ? (
+                      <div className="cart-empty">Loading your cart…</div>
+                    ) : cartItems.length === 0 ? (
                       <div className="cart-empty">Your cart is empty. Head back to coffees to build a blend.</div>
                     ) : (
                       <div className="cart-grid">
@@ -1201,7 +1562,7 @@ function App() {
                               <span className="cart-item__timestamp">
                                 {dateFormatter.format(item.createdAt)} · {timeFormatter.format(item.createdAt)}
                               </span>
-                              <span className="cart-item__meta">{item.bagSize.toFixed(1)} kg · {item.roastLabel}</span>
+                              <span className="cart-item__meta">{formatKg(item.bagSize)} · {item.roastLabel}</span>
                             </div>
                             <ul className="cart-item__blend">
                               {item.blend.map((part) => (
@@ -1243,12 +1604,16 @@ function App() {
                     <h2>Order history</h2>
                     <p>Follow every batch as it moves from queue to roastery to fulfilment.</p>
                   </div>
-                  {orderHistory.length === 0 ? (
+                  {!currentUser ? (
+                    <div className="history-empty">Log in to see your order history.</div>
+                  ) : isOrdersLoading ? (
+                    <div className="history-empty">Loading your order history…</div>
+                  ) : orders.length === 0 ? (
                     <div className="history-empty">No orders yet—checkout a cart to start your history.</div>
                   ) : (
                     <div className="history-grid">
-                      {orderHistory.map((order) => (
-                        <article className="order-card" key={order.id}>
+                      {orders.map((order) => (
+                        <article className="order-card" key={order._id}>
                           <div className="order-card__header">
                             <span className="order-card__reference">{order.reference}</span>
                             <span className={`status-badge status-badge--${order.status.toLowerCase()}`}>
@@ -1256,14 +1621,14 @@ function App() {
                             </span>
                           </div>
                           <div className="order-card__meta">
-                            <span>{order.bagSize.toFixed(1)} kg · {order.roastLabel}</span>
+                            <span>{formatKg(order.bagSize)} · {order.roastLabel}</span>
                             <span>
                               {dateFormatter.format(order.createdAt)} · {timeFormatter.format(order.createdAt)}
                             </span>
                           </div>
                           <ul className="order-card__blend">
                             {order.blend.map((part) => (
-                              <li key={`${order.id}-${part.coffeeId}`}>
+                              <li key={`${order._id}-${part.coffeeId}`}>
                                 <span>{part.name}</span>
                                 <span>{part.weight.toFixed(2)} kg</span>
                               </li>
@@ -1283,15 +1648,139 @@ function App() {
                   )}
                 </section>
 
-                <footer className="footer">
-                  <p>© {new Date().getFullYear()} {companyName} · Crafted in Ethiopia · Powered by traceable supply.</p>
-                </footer>
               </>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              !authReady ? (
+                <>
+                  <div className="orders-header">
+                    <div className="orders-header__intro">
+                      <div className="hero__badge">Admin</div>
+                      <h1 className="hero__title">Admin dashboard</h1>
+                      <p className="hero__subtitle">Loading your account…</p>
+                    </div>
+                  </div>
+                  <div className="history-empty">Loading…</div>
+                </>
+              ) : !currentUser || currentUser.role !== 'admin' ? (
+                <Navigate to="/" replace />
+              ) : (
+                <>
+                  <div className="orders-header">
+                    <div className="orders-header__intro">
+                      <div className="hero__badge">Admin</div>
+                      <h1 className="hero__title">Admin dashboard</h1>
+                      <p className="hero__subtitle">
+                        Track signups and customer spend.
+                      </p>
+                    </div>
+                  </div>
+
+                  <section className="section" id="admin">
+                    <div className="section__header">
+                      <h2>Overview</h2>
+                      <p>
+                        {(adminSummary?.totalSignups ?? 0)} total sign-up
+                        {(adminSummary?.totalSignups ?? 0) === 1 ? '' : 's'} · Total spent:{' '}
+                        {formatCurrency(adminSummary?.totalSpent ?? 0)}
+                      </p>
+                    </div>
+
+                    <div className="cart-panel">
+                      {(() => {
+                        if (isAdminLoading) {
+                          return <div className="history-empty">Loading users…</div>
+                        }
+                        if (!adminSummary || adminSummary.users.length === 0) {
+                          return <div className="history-empty">No users yet.</div>
+                        }
+                        const primaryCanPromote =
+                          primaryAdminEmail && normaliseEmail(currentUser.email) === normaliseEmail(primaryAdminEmail)
+
+                        return (
+                          <div className="history-grid">
+                            {adminSummary.users
+                              .slice()
+                              .sort((a, b) => (b.createdAt ?? 0) - (a.createdAt ?? 0))
+                              .map((user) => {
+                                const email = normaliseEmail(user.email)
+                                const role = user.role
+                                const totalSpent = user.totalSpent ?? 0
+                                const canPromote =
+                                  Boolean(primaryCanPromote) && role !== 'admin' && email !== normaliseEmail(primaryAdminEmail || '')
+
+                                return (
+                                  <article className="order-card" key={email}>
+                                    <div className="order-card__header">
+                                      <span className="order-card__reference">{user.name}</span>
+                                      <span className={`status-badge status-badge--${role === 'admin' ? 'fulfilled' : 'queued'}`}>
+                                        {role === 'admin' ? 'Admin' : 'Member'}
+                                      </span>
+                                    </div>
+                                    <div className="order-card__meta">
+                                      <span>{email}</span>
+                                      <span>
+                                        Joined {dateFormatter.format(user.createdAt ?? Date.now())} ·{' '}
+                                        {timeFormatter.format(user.createdAt ?? Date.now())}
+                                      </span>
+                                    </div>
+                                    <div className="order-card__footer">
+                                      <span className="order-card__price">Total spent: {formatCurrency(totalSpent)}</span>
+                                      {canPromote ? (
+                                        <button
+                                          type="button"
+                                          className="cart-actions__checkout"
+                                          onClick={() => {
+                                            const token = getStoredToken()
+                                            if (!token) {
+                                              setBlendNotice({ tone: 'warning', message: 'Log in again to manage admins.' })
+                                              showToast('warning', 'Log in again to manage admins.')
+                                              return
+                                            }
+                                            apiRequest<{ ok: true }>(
+                                              '/admin/promote',
+                                              { method: 'POST', body: JSON.stringify({ email }) },
+                                              token,
+                                            )
+                                              .then(() => apiRequest<AdminSummary>('/admin/users', { method: 'GET' }, token))
+                                              .then((result) => {
+                                                setAdminSummary(result)
+                                                setBlendNotice({ tone: 'positive', message: `${email} is now an admin.` })
+                                                showToast('positive', `${email} is now an admin.`)
+                                              })
+                                              .catch((error: unknown) => {
+                                                const message =
+                                                  error instanceof Error ? error.message : 'Unable to promote user.'
+                                                setBlendNotice({ tone: 'warning', message })
+                                                showToast('warning', message)
+                                              })
+                                          }}
+                                        >
+                                          Make admin
+                                        </button>
+                                      ) : null}
+                                    </div>
+                                  </article>
+                                )
+                              })}
+                          </div>
+                        )
+                      })()}
+                    </div>
+                  </section>
+                </>
+              )
             }
           />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
+        {renderSiteFooter()}
 
         {isAuthModalOpen ? (
           <div className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
@@ -1304,7 +1793,12 @@ function App() {
                 <h2 className="auth-modal__title" id="auth-modal-title">
                   {authMode === 'signup' ? 'Create your account' : 'Log in to continue'}
                 </h2>
-                <button type="button" onClick={closeAuthModal} className="auth-modal__close">
+                <button
+                  type="button"
+                  onClick={closeAuthModal}
+                  className="auth-modal__close"
+                  disabled={isAuthSubmitting}
+                >
                   Close
                 </button>
               </header>
@@ -1324,6 +1818,7 @@ function App() {
                       autoComplete="name"
                       value={authForm.name}
                       onChange={(event) => handleAuthInputChange('name', event.target.value)}
+                      disabled={isAuthSubmitting}
                       required
                     />
                   </label>
@@ -1337,6 +1832,7 @@ function App() {
                     autoComplete="email"
                     value={authForm.email}
                     onChange={(event) => handleAuthInputChange('email', event.target.value)}
+                    disabled={isAuthSubmitting}
                     required
                   />
                 </label>
@@ -1349,12 +1845,20 @@ function App() {
                     autoComplete={authMode === 'signup' ? 'new-password' : 'current-password'}
                     value={authForm.password}
                     onChange={(event) => handleAuthInputChange('password', event.target.value)}
+                    disabled={isAuthSubmitting}
                     required
                   />
                 </label>
                 {authNotice ? <div className="auth-form__notice">{authNotice}</div> : null}
-                <button className="auth-form__submit" type="submit">
-                  {authMode === 'signup' ? 'Create account' : 'Log in'}
+                <button className="auth-form__submit" type="submit" disabled={isAuthSubmitting}>
+                  {isAuthSubmitting ? (
+                    <span className="auth-form__submitContent">
+                      <span className="app-spinner" aria-hidden="true" />
+                      {authMode === 'signup' ? 'Creating…' : 'Logging in…'}
+                    </span>
+                  ) : (
+                    (authMode === 'signup' ? 'Create account' : 'Log in')
+                  )}
                 </button>
               </form>
               <p className="auth-form__switch">
@@ -1362,6 +1866,7 @@ function App() {
                 <button
                   type="button"
                   onClick={() => openAuthModal(authMode === 'signup' ? 'login' : 'signup')}
+                  disabled={isAuthSubmitting}
                 >
                   {authMode === 'signup' ? 'Log in instead' : 'Create one'}
                 </button>
@@ -1369,6 +1874,46 @@ function App() {
             </div>
           </div>
         ) : null}
+
+        {isBootLoading || isAuthSubmitting ? (
+          <div className="app-loading" aria-live="polite" aria-busy="true">
+            <div className="app-loading__panel">
+              <div className="app-spinner" aria-hidden="true" />
+              <div className="app-loading__text">
+                {isAuthSubmitting ? 'Signing you in…' : 'Loading your account…'}
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {toastNotice ? (
+          <div className="app-toast" aria-live="polite">
+            <div className={`app-toast__panel app-toast__panel--${toastNotice.tone}`}>
+              <span className="app-toast__message">{toastNotice.message}</span>
+              <div className="app-toast__actions">
+                {toastNotice.action ? (
+                  <button
+                    type="button"
+                    className="app-toast__action"
+                    onClick={() => handleToastAction(toastNotice.action!)}
+                  >
+                    {toastNotice.action.label}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  className="app-toast__close"
+                  onClick={() => setToastNotice(null)}
+                  aria-label="Dismiss message"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {renderChatbot()}
       </div>
 
       {pendingCartDraft && isRoastPromptOpen ? (
@@ -1381,8 +1926,10 @@ function App() {
             </p>
             <div className="roast-prompt__options">
               {roastProfiles.map((profile) => {
-                const price =
+                const unitPrice =
                   pendingCartDraft.basePrice + profile.extraCostPerKg * pendingCartDraft.bagSize
+                const quantity = Math.max(1, Math.trunc(pendingCartDraft.quantity || 1))
+                const price = unitPrice * quantity
                 return (
                   <button
                     key={profile.id}

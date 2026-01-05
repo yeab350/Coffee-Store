@@ -8,12 +8,13 @@ Immersive single-page experience for exploring Ethiopian microlots, balancing cu
 - Custom blend lab with live weight tracking and bag size balancing
 - Roast choice prompt that asks account holders for As Is, Roasted, or Roasted & Ground before carting
 - Account creation, login, and a persistent navbar with top-right cart access
-- First registered account is promoted to admin and flagged within the navbar session badge
+- Only `yeabtsegaye350@gmail.com` is the default admin; that account can promote other users to admin
 - Quick-add lots prompt for roast preparation before they enter the cart
 - Custom blends prompt for percentages, enforce 100% totals, then ask how many kilograms you need
 - Cart staging area with removal controls and total value visibility
 - Order history timeline that auto-progresses through queued, roasting, and fulfilled states
 - Responsive gradient-driven theme with subtle motion accents
+- Public AI chatbot (OpenAI) for coffee + blend guidance
 
 ## Tech Stack
 
@@ -25,12 +26,17 @@ Immersive single-page experience for exploring Ethiopian microlots, balancing cu
 ## Getting Started
 
 1. Install dependencies with npm install
-2. Start the dev server with npm run dev (http://localhost:5173)
-3. Create a production build with npm run build
+2. Create a `.env` file (see `.env.example`) and set `MONGODB_URI` + `JWT_SECRET` (+ `OPENAI_API_KEY` for the chatbot)
+3. Start both servers together with `npm run dev:all`
+4. (Or) start the MongoDB API with `npm run dev:api` (http://localhost:5175)
+5. (Or) start the frontend dev server with `npm run dev` (http://localhost:5173)
+6. Create a production build with npm run build
 
 ## Available Scripts
 
 - npm run dev – start the development server
+- npm run dev:api – start the MongoDB API server
+- npm run dev:all – start frontend + API together
 - npm run build – type-check and generate a production build
 - npm run preview – inspect the production build locally
 - npm run lint – execute ESLint using the shared configuration
@@ -63,3 +69,17 @@ MongoDB Compass offers a local-first way to inspect and seed data for the eventu
 4. Expose a secure connection string via an `.env` entry like `VITE_API_BASE_URL` once a backend is ready.
 
 > The current UI keeps credentials in `localStorage` for demo purposes only. Integrate a Node/Express or serverless API that authenticates against MongoDB, stores salted password hashes, and issues secure session tokens before moving to production.
+
+## MongoDB API (Implemented)
+
+This repo now includes a small Express API in `server/index.js` that uses MongoDB for:
+
+- user accounts (signup/login)
+- order history per user
+- admin dashboard signups + total spend
+
+It also includes a public chatbot endpoint:
+
+- `POST /chat` (no auth) – proxies chat requests to OpenAI using `OPENAI_API_KEY`
+
+Because the data is stored in MongoDB, the admin page will show users created from different Chrome profiles/devices (as long as they use the same API + database).
