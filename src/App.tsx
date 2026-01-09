@@ -23,7 +23,7 @@ type Coffee = {
   imageAlt: string
 }
 
-const coffeeCatalog: Coffee[] = [
+const initialCoffeeCatalog: Coffee[] = [
   {
     id: 'yirgacheffe-washed',
     name: 'Yirgacheffe – Washed',
@@ -338,24 +338,22 @@ function App() {
   const location = useLocation()
   const showBackgroundVideo = location.pathname === '/'
   const pageClassName = showBackgroundVideo ? 'page page--with-video' : 'page page--interior'
+  const [catalog, setCatalog] = useState<Coffee[]>(initialCoffeeCatalog)
+  const [isCatalogLoading, setIsCatalogLoading] = useState(false)
   const [bagSize, setBagSize] = useState<number>(1)
   const [customTotalKg, setCustomTotalKg] = useState<number>(1)
   const [catalogQuantities, setCatalogQuantities] = useState<Record<string, number>>(() => {
-    const initial: Record<string, number> = {}
-    coffeeCatalog.forEach((coffee) => {
-      initial[coffee.id] = 1
-    })
-    return initial
+    return {}
   })
   const [blendRows, setBlendRows] = useState<BlendRow[]>([
     {
       id: 'row-1',
-      coffeeId: coffeeCatalog[0].id,
+      coffeeId: initialCoffeeCatalog[0].id,
       percent: 50,
     },
     {
       id: 'row-2',
-      coffeeId: coffeeCatalog[1].id,
+      coffeeId: initialCoffeeCatalog[1].id,
       percent: 50,
     },
   ])
@@ -406,6 +404,94 @@ function App() {
     if (!isChatOpen) return
     chatScrollRef.current?.scrollTo({ top: chatScrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [chatMessages, isChatOpen])
+
+  useEffect(() => {
+    setCatalogQuantities((current) => {
+      const next: Record<string, number> = { ...current }
+      for (const coffee of catalog) {
+        if (!Number.isFinite(next[coffee.id]) || next[coffee.id] <= 0) {
+          next[coffee.id] = 1
+        }
+      }
+      return next
+    })
+  }, [catalog])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+
+    setIsCatalogLoading(true)
+    apiRequest<{ products: unknown[] }>(`/products?limit=200`, { method: 'GET', signal }, null)
+      .then((result) => {
+        const list = Array.isArray(result.products) ? result.products : []
+        const mapped = list
+          .map((raw) => raw as Record<string, unknown>)
+          .map((p) => {
+            const id = String(p.id || p.slug || '').trim()
+            const name = String(p.name || '').trim()
+            if (!id || !name) {
+              return null
+            }
+
+            const process = String(p.process || '').trim() || '—'
+            const region = String(p.region || '').trim() || '—'
+            const altitude = String(p.altitude || '').trim() || '—'
+            const pricePerKg = Number(p.pricePerKg ?? p.price ?? 0)
+            const story = String(p.story || p.description || '').trim()
+            const imageUrl = String(p.imageUrl || '').trim()
+            const flavorNotes = Array.isArray(p.flavorNotes)
+              ? (p.flavorNotes as unknown[]).map((n) => String(n)).filter(Boolean)
+              : []
+
+            return {
+              id,
+              name,
+              process,
+              region,
+              flavorNotes,
+              altitude,
+              pricePerKg: Number.isFinite(pricePerKg) ? pricePerKg : 0,
+              story,
+              imageSrc: imageUrl || coffeeImageFallbackSrc,
+              imageAlt: `${name} coffee`,
+            } satisfies Coffee
+          })
+          .filter(Boolean) as Coffee[]
+
+        if (mapped.length) {
+          setCatalog(mapped)
+        }
+      })
+      .catch(() => {
+        // Keep the bundled fallback catalog if the API is unavailable.
+      })
+      .finally(() => {
+        if (!signal.aborted) {
+          setIsCatalogLoading(false)
+        }
+      })
+
+    return () => controller.abort()
+  }, [])
+
+  useEffect(() => {
+    setBlendRows((rows) => {
+      if (!catalog.length) {
+        return rows
+      }
+      const catalogIds = new Set(catalog.map((c) => c.id))
+      const nextRows = rows.map((row, index) => {
+        if (catalogIds.has(row.coffeeId)) {
+          return row
+        }
+        const fallbackId = catalog[index % catalog.length]?.id || catalog[0].id
+        return { ...row, coffeeId: fallbackId }
+      })
+      return nextRows
+    })
+  }, [catalog])
+
   const [pendingCartDraft, setPendingCartDraft] = useState<PendingCartDraft | null>(null)
   const [isRoastPromptOpen, setIsRoastPromptOpen] = useState(false)
   const [backgroundVideoIndex, setBackgroundVideoIndex] = useState(0)
@@ -470,7 +556,7 @@ function App() {
 
   const estimatedPrice = useMemo(() => {
     const pricePerKg = blendRows.reduce((sum, row) => {
-      const coffee = coffeeCatalog.find((item) => item.id === row.coffeeId)
+      const coffee = catalog.find((item) => item.id === row.coffeeId)
       if (!coffee) {
         return sum
       }
@@ -478,7 +564,7 @@ function App() {
       return sum + coffee.pricePerKg * weightKg
     }, 0)
     return pricePerKg
-  }, [blendRows, customTotalKg])
+  }, [blendRows, catalog, customTotalKg])
 
   const bagQuantity = useMemo(() => computeBagQuantity(customTotalKg, bagSize), [bagSize, customTotalKg])
 
@@ -671,7 +757,7 @@ function App() {
       ...rows,
       {
         id: `row-${rows.length + 1}`,
-        coffeeId: coffeeCatalog[rows.length % coffeeCatalog.length].id,
+        coffeeId: catalog[rows.length % catalog.length]?.id ?? initialCoffeeCatalog[0].id,
         percent: 0,
       },
     ])
@@ -789,7 +875,7 @@ function App() {
       return
     }
 
-    const coffee = coffeeCatalog.find((item) => item.id === coffeeId)
+    const coffee = catalog.find((item) => item.id === coffeeId)
     const timestamp = Date.now()
     const blend: CartBlend[] = [
       {
@@ -871,7 +957,7 @@ function App() {
     const blend: CartBlend[] = blendRows
       .filter((row) => row.percent > 0)
       .map((row) => {
-        const coffee = coffeeCatalog.find((item) => item.id === row.coffeeId)
+        const coffee = catalog.find((item) => item.id === row.coffeeId)
         const weightKg = bagSize * (Number(row.percent || 0) / 100)
         return {
           coffeeId: row.coffeeId,
@@ -886,7 +972,7 @@ function App() {
     }
 
     const basePrice = blend.reduce((sum, entry) => {
-      const coffee = coffeeCatalog.find((item) => item.id === entry.coffeeId)
+      const coffee = catalog.find((item) => item.id === entry.coffeeId)
       if (!coffee) {
         return sum
       }
@@ -1332,7 +1418,7 @@ function App() {
               <>
                 <section className="section" id="catalog">
                   <div className="catalog">
-                    {coffeeCatalog.map((coffee) => (
+                    {catalog.map((coffee) => (
                       <article className="coffee-card" key={coffee.id}>
                         <div className="coffee-card__image" aria-hidden="true">
                           <img
@@ -1390,6 +1476,9 @@ function App() {
                       </article>
                     ))}
                   </div>
+                  {isCatalogLoading ? (
+                    <p className="section__hint">Loading products from the database…</p>
+                  ) : null}
                 </section>
 
                 <section className="section" id="custom-order" ref={blendSectionRef}>
@@ -1453,7 +1542,7 @@ function App() {
                               value={row.coffeeId}
                               onChange={(event) => handleBlendChange(row.id, { coffeeId: event.target.value })}
                             >
-                              {coffeeCatalog.map((coffee) => (
+                              {catalog.map((coffee) => (
                                 <option key={coffee.id} value={coffee.id}>
                                   {coffee.name}
                                 </option>
