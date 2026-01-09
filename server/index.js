@@ -111,6 +111,113 @@ const extractResponseText = (payload) => {
   return chunks.join('\n').trim()
 }
 
+const seedProducts = async (products) => {
+  const now = Date.now()
+  const seed = [
+    {
+      slug: 'yirgacheffe-washed',
+      name: 'Yirgacheffe – Washed',
+      region: 'Yirgacheffe',
+      process: 'Washed',
+      flavorNotes: ['floral', 'citrus', 'tea-like'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Clean, bright cup with lifted aromatics typical of washed processing.',
+      imageUrl: '/coffees/yirgacheffe-washed.jpg',
+    },
+    {
+      slug: 'yirgacheffe-natural',
+      name: 'Yirgacheffe – Natural',
+      region: 'Yirgacheffe',
+      process: 'Natural',
+      flavorNotes: ['berry', 'stone fruit', 'sweet'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Fruit-forward profile from whole-cherry drying and careful raised-bed handling.',
+      imageUrl: '/coffees/yirgacheffe-natural.jpg',
+    },
+    {
+      slug: 'sidamo-washed',
+      name: 'Sidamo – Washed',
+      region: 'Sidamo',
+      process: 'Washed',
+      flavorNotes: ['citrus', 'honey', 'black tea'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Structured and crisp, highlighting clarity and sweetness from washed processing.',
+      imageUrl: '/coffees/sidamo-washed.jpg',
+    },
+    {
+      slug: 'guji-natural',
+      name: 'Guji – Natural',
+      region: 'Guji',
+      process: 'Natural',
+      flavorNotes: ['ripe fruit', 'cocoa', 'floral'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'A classic natural profile with a rounded body and sweet finish.',
+      imageUrl: '/coffees/guji-natural.jpg',
+    },
+    {
+      slug: 'harrar-natural',
+      name: 'Harrar – Natural',
+      region: 'Harrar',
+      process: 'Natural',
+      flavorNotes: ['dried fruit', 'spice', 'chocolate'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Bold and aromatic, leaning into traditional Harrar natural character.',
+      imageUrl: '/coffees/harrar-natural.jpg',
+    },
+    {
+      slug: 'limu-washed',
+      name: 'Limu – Washed',
+      region: 'Limu',
+      process: 'Washed',
+      flavorNotes: ['sweet citrus', 'caramel', 'tea-like'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Balanced washed coffee with a clean finish and gentle sweetness.',
+      imageUrl: '/coffees/limu-washed.jpg',
+    },
+    {
+      slug: 'bench-maji-natural',
+      name: 'Bench Maji – Natural',
+      region: 'Bench Maji',
+      process: 'Natural',
+      flavorNotes: ['tropical fruit', 'jammy', 'cacao'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Sweet natural lot with ripe fruit character and a smooth body.',
+      imageUrl: '/coffees/bench-maji-natural.jpg',
+    },
+    {
+      slug: 'kaffa-forest-coffee',
+      name: 'Kaffa – Forest Coffee',
+      region: 'Kaffa',
+      process: 'Forest Coffee',
+      flavorNotes: ['herbal', 'floral', 'cocoa'],
+      altitude: '—',
+      pricePerKg: 1500,
+      story: 'Wild and semi-wild coffees traditionally collected from forest systems in Kaffa.',
+      imageUrl: '/coffees/kaffa-forest-coffee.jpg',
+    },
+  ]
+
+  await Promise.all(
+    seed.map((item) =>
+      products.updateOne(
+        { slug: item.slug },
+        {
+          $set: { ...item, updatedAt: now },
+          $setOnInsert: { createdAt: now },
+        },
+        { upsert: true },
+      ),
+    ),
+  )
+}
+
 const main = async () => {
   const client = new MongoClient(MONGODB_URI)
   await client.connect()
@@ -118,9 +225,14 @@ const main = async () => {
   const db = client.db(MONGODB_DB)
   const users = db.collection('users')
   const orders = db.collection('orders')
+  const products = db.collection('products')
 
   await users.createIndex({ email: 1 }, { unique: true })
   await orders.createIndex({ userEmail: 1, createdAt: -1 })
+  await products.createIndex({ slug: 1 }, { unique: true })
+  await products.createIndex({ createdAt: -1 })
+
+  await seedProducts(products)
 
   const app = express()
 
@@ -141,6 +253,40 @@ const main = async () => {
   app.use(express.json({ limit: '1mb' }))
 
   app.get('/health', (_req, res) => res.json({ ok: true }))
+
+  // Products listing used by the mobile app.
+  // Returns JSON: { products: [...] }
+  app.get('/products', async (req, res) => {
+    const limitRaw = Number(req.query?.limit)
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(200, Math.floor(limitRaw)) : 200
+
+    const toNumber = (value) => {
+      const num = Number(value)
+      return Number.isFinite(num) ? num : 0
+    }
+
+    const list = await products
+      .find({})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .toArray()
+
+    const normalized = list.map((p) => ({
+      id: p.slug || (p._id?.toString?.() || String(p._id || '')),
+      name: p.name || p.title || '',
+      price: toNumber(p.price ?? p.pricePerKg ?? p.amount ?? 0),
+      imageUrl: p.imageUrl || p.image || p.imageSrc || '',
+      description: p.description || p.story || '',
+      slug: p.slug || '',
+      region: p.region || '',
+      process: p.process || '',
+      flavorNotes: Array.isArray(p.flavorNotes) ? p.flavorNotes : [],
+      altitude: p.altitude || '',
+      pricePerKg: toNumber(p.pricePerKg ?? p.price ?? 0),
+    }))
+
+    return res.json({ products: normalized })
+  })
 
   // Public chat endpoint (no auth) that calls OpenAI securely from the server.
   // NOTE: Do NOT call OpenAI directly from the browser; keep API keys server-side.

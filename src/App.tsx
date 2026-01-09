@@ -1212,7 +1212,7 @@ function App() {
                     roasting standards so every bag tastes clean, vibrant, and consistent.
                     <br />
                     <br />
-                    Head to the coffees page to browse micro-lots, build a custom blend by weight, and choose it
+                    Head to the coffees page to browse micro-lots, build a custom blend by percentage, and choose it
                     as-is, roasted, or roasted & ground.
                   </p>
                   <div className="hero__actions">
@@ -1259,37 +1259,37 @@ function App() {
 
                 <section className="section">
                   <div className="section__header">
-                    <h2>How it is collected</h2>
-                    <p>
-                      Our lots come from smallholders and washing stations across Ethiopia. Cherries are
-                      handpicked at peak ripeness, floated and sorted, then processed the same day to preserve
-                      sweetness, florals, and clean acidity.
-                    </p>
+                    <h2>How it’s collected, roasted, and grounded</h2>
+                    <p>Three steps, handled with care from farm to cup.</p>
                   </div>
-                </section>
-
-                <section className="section">
-                  <div className="section__header">
-                    <h2>How it is roasted</h2>
-                    <p>
-                      We roast to order and cool quickly to lock in aromatics. Every batch is handled with care—
-                      consistent charge temperatures, tracked development, and fast cooling—so the cup stays sweet
-                      and expressive.
-                      <br />
-                      <br />
-                      Profiles are adjusted for espresso or filter so you get balanced sweetness, sparkling acidity,
-                      and a finish that stays clean.
-                    </p>
-                  </div>
-                </section>
-
-                <section className="section">
-                  <div className="section__header">
-                    <h2>How it is ground</h2>
-                    <p>
-                      Choose whole bean or roasted & ground. If you pick ground, we match it to your brew method
-                      (espresso, pour-over, French press) so extraction stays even and the cup stays sweet.
-                    </p>
+                  <div className="details-grid">
+                    <div className="details-card">
+                      <h3>Collected</h3>
+                      <p>
+                        Our lots come from smallholders and washing stations across Ethiopia. Cherries are
+                        handpicked at peak ripeness, floated and sorted, then processed the same day to preserve
+                        sweetness, florals, and clean acidity.
+                      </p>
+                    </div>
+                    <div className="details-card">
+                      <h3>Roasted</h3>
+                      <p>
+                        We roast to order and cool quickly to lock in aromatics. Every batch is handled with care—
+                        consistent charge temperatures, tracked development, and fast cooling—so the cup stays sweet
+                        and expressive.
+                        <br />
+                        <br />
+                        Profiles are adjusted for espresso or filter so you get balanced sweetness, sparkling acidity,
+                        and a finish that stays clean.
+                      </p>
+                    </div>
+                    <div className="details-card">
+                      <h3>Grounded</h3>
+                      <p>
+                        Choose whole bean or roasted & ground. If you pick ground, we match it to your brew method
+                        (espresso, pour-over, French press) so extraction stays even and the cup stays sweet.
+                      </p>
+                    </div>
                   </div>
                 </section>
 
