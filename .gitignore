@@ -28,3 +28,9 @@ dist-ssr
 
 # Nested repo (managed separately)
 coffee_app/
+
+# Flutter app folders (keep local, do not commit)
+coffee_app-Flutter-/
+coffee_app-Flutter-backup/
+coffee_app-flutter/
+coffee_app_flutter/
