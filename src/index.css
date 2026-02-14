@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  font-family: 'Poppins', 'Inter', 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Poppins', 'Segoe UI', sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-sand-0);
@@ -30,6 +30,9 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+
+  /* Layout primitive used by App.css */
+  --container-max: 1120px;
 }
 
 html {
@@ -49,6 +52,23 @@ body {
 
 a {
   color: inherit;
+  text-decoration-color: rgba(15, 118, 110, 0.35);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--color-sand-1);
+}
+
+a:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.22);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: rgba(15, 118, 110, 0.18);
 }
 
 #root {

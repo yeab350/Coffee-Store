@@ -2,12 +2,6 @@ import type { FormEvent } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
-
-const backgroundVideos = [
-  '/Coffee%20background%201.mp4',
-  '/Coffee%20background%202.mp4',
-  '/Coffee%20background%203.mp4',
-]
 const coffeeImageFallbackSrc = '/coffee-placeholder.svg'
 
 type Coffee = {
@@ -336,8 +330,7 @@ const saveCartForEmail = (email: string, items: CartItem[]) => {
 function App() {
   const navigate = useNavigate()
   const location = useLocation()
-  const showBackgroundVideo = location.pathname === '/'
-  const pageClassName = showBackgroundVideo ? 'page page--with-video' : 'page page--interior'
+  const pageClassName = location.pathname === '/' ? 'page' : 'page page--interior'
   const [catalog, setCatalog] = useState<Coffee[]>(initialCoffeeCatalog)
   const [isCatalogLoading, setIsCatalogLoading] = useState(false)
   const [bagSize, setBagSize] = useState<number>(1)
@@ -404,6 +397,40 @@ function App() {
     if (!isChatOpen) return
     chatScrollRef.current?.scrollTo({ top: chatScrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [chatMessages, isChatOpen])
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
+
+    for (const el of elements) {
+      el.classList.add('reveal')
+    }
+
+    if (reduceMotion) {
+      for (const el of elements) {
+        el.classList.add('is-revealed')
+      }
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const target = entry.target as HTMLElement
+          target.classList.add('is-revealed')
+          observer.unobserve(target)
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' },
+    )
+
+    for (const el of elements) {
+      observer.observe(el)
+    }
+
+    return () => observer.disconnect()
+  }, [location.pathname, catalog.length, cartItems.length, orders.length, adminSummary?.users.length])
 
   useEffect(() => {
     setCatalogQuantities((current) => {
@@ -494,38 +521,10 @@ function App() {
 
   const [pendingCartDraft, setPendingCartDraft] = useState<PendingCartDraft | null>(null)
   const [isRoastPromptOpen, setIsRoastPromptOpen] = useState(false)
-  const [backgroundVideoIndex, setBackgroundVideoIndex] = useState(0)
-  const backgroundVideoRef = useRef<HTMLVideoElement | null>(null)
   const cartSectionRef = useRef<HTMLElement | null>(null)
   const orderTimers = useRef<Record<string, { roasting?: number; fulfilled?: number }>>({})
 
   const primaryAdminEmail = adminSummary?.primaryAdminEmail
-
-  useEffect(() => {
-    const video = backgroundVideoRef.current
-    if (!video) {
-      return
-    }
-
-    try {
-      video.load()
-      const playResult = video.play()
-      if (playResult && typeof (playResult as Promise<void>).catch === 'function') {
-        ;(playResult as Promise<void>).catch(() => {
-          // Autoplay can be blocked; ignore.
-        })
-      }
-    } catch {
-      // Ignore if the browser blocks autoplay or video isn't ready.
-    }
-  }, [backgroundVideoIndex])
-
-  const handleBackgroundVideoEnded = () => {
-    if (backgroundVideos.length <= 1) {
-      return
-    }
-    setBackgroundVideoIndex((index) => (index + 1) % backgroundVideos.length)
-  }
 
   const totalPercent = useMemo(
     () => blendRows.reduce((sum, row) => sum + Number(row.percent || 0), 0),
@@ -1264,24 +1263,6 @@ function App() {
 
   return (
     <>
-      {showBackgroundVideo ? (
-        <div className="bg-video" aria-hidden="true">
-          <video
-            className="bg-video__media"
-            autoPlay
-            muted
-            playsInline
-            preload="metadata"
-            onEnded={handleBackgroundVideoEnded}
-            ref={backgroundVideoRef}
-          >
-            <source
-              src={backgroundVideos[backgroundVideoIndex] ?? backgroundVideos[0]}
-              type="video/mp4"
-            />
-          </video>
-        </div>
-      ) : null}
       <div className={pageClassName}>
         {renderSiteHeader()}
         <Routes>
@@ -1314,6 +1295,27 @@ function App() {
                   </div>
                 </header>
 
+                <section className="section section--media" aria-label="Coffee imagery" data-reveal>
+                  <div className="media-inline media-inline--split" data-reveal>
+                    <figure className="media-inline__frame" data-reveal style={{ '--reveal-delay': '0ms' } as React.CSSProperties}>
+                      <img
+                        src={encodeURI('/Master the art of espresso with our Clive Coffee….jpeg')}
+                        alt="Coffee being prepared"
+                        loading="lazy"
+                        onError={handleCoffeeImageError}
+                      />
+                    </figure>
+                    <div className="media-inline__copy" data-reveal style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
+                      <div className="hero__badge">Small-batch focus</div>
+                      <h2 className="media-inline__title">Built for clarity</h2>
+                      <p className="media-inline__text">
+                        Clean processing, careful sorting, and roast profiles tuned for sweetness.
+                        Browse the lineup, then build a custom blend by percentage.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
                 <section className="section section--alt">
                   <div className="section__header">
                     <h2>Types of coffee available</h2>
@@ -1340,6 +1342,67 @@ function App() {
                       <h3>Single origins</h3>
                       <p>Compare regions side-by-side: Yirgacheffe, Sidamo, Guji, Harrar, Limu, Bench Maji, and Kaffa.</p>
                     </div>
+                  </div>
+                </section>
+
+                <section className="section section--media" aria-label="Process gallery" data-reveal>
+                  <div className="media-inline__cards" aria-label="Coffee types explained">
+                    <article
+                      className="media-inline__card"
+                      data-reveal
+                      style={{ '--reveal-delay': '0ms' } as React.CSSProperties}
+                    >
+                      <div className="media-inline__cardImage" aria-hidden="true">
+                        <img
+                          src={encodeURI('/As is Coffee beans.jpeg')}
+                          alt="Green coffee beans"
+                          loading="lazy"
+                          onError={handleCoffeeImageError}
+                        />
+                      </div>
+                      <div className="media-inline__cardBody">
+                        <h3>As Is (Green Beans)</h3>
+                        <p>Unroasted—best for home roasters and longer storage.</p>
+                      </div>
+                    </article>
+
+                    <article
+                      className="media-inline__card"
+                      data-reveal
+                      style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+                    >
+                      <div className="media-inline__cardImage" aria-hidden="true">
+                        <img
+                          src={encodeURI('/Grounded Coffee.jpeg')}
+                          alt="Ground coffee"
+                          loading="lazy"
+                          onError={handleCoffeeImageError}
+                        />
+                      </div>
+                      <div className="media-inline__cardBody">
+                        <h3>Roasted &amp; Ground</h3>
+                        <p>Ground for your brew method (espresso, pour-over, French press).</p>
+                      </div>
+                    </article>
+
+                    <article
+                      className="media-inline__card"
+                      data-reveal
+                      style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
+                    >
+                      <div className="media-inline__cardImage" aria-hidden="true">
+                        <img
+                          src={encodeURI('/Roasted Coffee.jpeg')}
+                          alt="Roasted coffee beans"
+                          loading="lazy"
+                          onError={handleCoffeeImageError}
+                        />
+                      </div>
+                      <div className="media-inline__cardBody">
+                        <h3>Roasted (Whole Bean)</h3>
+                        <p>Maximum freshness and flavor control—grind right before brewing.</p>
+                      </div>
+                    </article>
                   </div>
                 </section>
 
