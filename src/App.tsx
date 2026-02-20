@@ -365,11 +365,14 @@ function App() {
   const [adminSummary, setAdminSummary] = useState<AdminSummary | null>(null)
   const [isAdminLoading, setIsAdminLoading] = useState(false)
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const [isSignOutDialogOpen, setIsSignOutDialogOpen] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup')
   const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' })
   const [authNotice, setAuthNotice] = useState<string>('')
   const [isAuthSubmitting, setIsAuthSubmitting] = useState(false)
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const [highlightCoffeeId, setHighlightCoffeeId] = useState<string | null>(null)
+  const coffeeCardRefs = useRef<Record<string, HTMLElement | null>>({})
 
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
@@ -614,6 +617,34 @@ function App() {
   }
 
   useEffect(() => {
+    if (location.pathname !== '/coffee') {
+      return
+    }
+
+    const routeState = location.state as { highlightCoffeeId?: string } | null
+    const targetCoffeeId = routeState?.highlightCoffeeId
+    if (!targetCoffeeId) {
+      return
+    }
+
+    setHighlightCoffeeId(targetCoffeeId)
+
+    requestAnimationFrame(() => {
+      coffeeCardRefs.current[targetCoffeeId]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    })
+
+    const timeout = window.setTimeout(() => {
+      setHighlightCoffeeId((current) => (current === targetCoffeeId ? null : current))
+    }, 3200)
+
+    navigate('/coffee', { replace: true, state: null })
+
+    return () => {
+      window.clearTimeout(timeout)
+    }
+  }, [location.pathname, location.state, navigate])
+
+  useEffect(() => {
     const storedToken = getStoredToken()
     if (!storedToken) {
       setAuthReady(true)
@@ -792,9 +823,10 @@ function App() {
       return
     }
 
-    const trimmedEmail = normaliseEmail(authForm.email)
-    const trimmedName = authForm.name.trim()
-    const password = authForm.password.trim()
+    const formData = new FormData(event.currentTarget)
+    const trimmedEmail = normaliseEmail(String(formData.get('email') || ''))
+    const trimmedName = String(formData.get('name') || '').trim()
+    const password = String(formData.get('password') || '').trim()
 
     if (!trimmedEmail || !password) {
       setAuthNotice('Enter both email and password to continue.')
@@ -856,6 +888,16 @@ function App() {
   }
 
   const handleSignOut = () => {
+    setIsSignOutDialogOpen(true)
+  }
+
+  const cancelSignOut = () => {
+    setIsSignOutDialogOpen(false)
+  }
+
+  const confirmSignOut = () => {
+    setIsSignOutDialogOpen(false)
+
     window.localStorage.removeItem(SESSION_STORAGE_KEY)
     window.localStorage.removeItem(TOKEN_STORAGE_KEY)
     setCurrentUser(null)
@@ -1270,58 +1312,74 @@ function App() {
             path="/"
             element={
               <>
-                <header className="hero">
-                  <div className="hero__badge">From farm to cup</div>
-                  <h1 className="hero__title">Abyssinia coffee</h1>
-                  <p className="hero__subtitle">
-                    Discover what makes Ethiopian coffee unique—from careful cherry selection to roast profiles
-                    tuned for sweetness and clarity. We work with premium lots, strict sorting, and small-batch
-                    roasting standards so every bag tastes clean, vibrant, and consistent.
-                    <br />
-                    <br />
-                    Head to the coffees page to browse micro-lots, build a custom blend by percentage, and choose it
-                    as-is, roasted, or roasted & ground.
-                  </p>
-                  <div className="hero__actions">
-                    <Link className="hero__cta" to="/coffee">
-                      Browse coffees
-                    </Link>
-                    <Link className="hero__ghost" to="/coffee">
-                      Place a custom order
-                    </Link>
-                    <Link className="hero__ghost hero__ghost--minimal" to="/orders">
-                      Review cart
-                    </Link>
+                <header className="hero home-hero" data-reveal>
+                  <div className="home-hero__content">
+                    <div className="hero__badge">Freshly roasted coffee</div>
+                    <h1 className="hero__title">Great coffee at your doorstep</h1>
+                    <p className="hero__subtitle">
+                      Discover premium Ethiopian lots and build your custom order exactly how you brew: as-is,
+                      roasted, or roasted &amp; ground.
+                    </p>
+                    <div className="hero__actions">
+                      <Link className="hero__cta" to="/coffee">
+                        Shop now
+                      </Link>
+                    </div>
                   </div>
                 </header>
 
-                <section className="section section--media" aria-label="Coffee imagery" data-reveal>
-                  <div className="media-inline media-inline--split" data-reveal>
-                    <figure className="media-inline__frame" data-reveal style={{ '--reveal-delay': '0ms' } as React.CSSProperties}>
+                <section className="section home-showcase" data-reveal>
+                  <div className="home-showcase__products">
+                    <h2>Popular products</h2>
+                    <div className="home-products-grid">
+                      {catalog.slice(0, 4).map((coffee) => (
+                        <Link
+                          key={`home-${coffee.id}`}
+                          className="home-product-card"
+                          to="/coffee"
+                          state={{ highlightCoffeeId: coffee.id }}
+                        >
+                          <div className="home-product-card__image" aria-hidden="true">
+                            <img
+                              src={`/coffees/${coffee.id}.jpg`}
+                              alt={coffee.name}
+                              loading="lazy"
+                              onError={handleCoffeeImageError}
+                            />
+                          </div>
+                          <h3>{coffee.name.split('–')[0].trim()}</h3>
+                          <p>{formatCurrency(coffee.pricePerKg)}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <aside className="home-showcase__collection" aria-label="Our collection">
+                    <h2>Our collection</h2>
+                    <p>Choose from beans, ground coffee, equipment, and merchandise.</p>
+                    <div className="home-collection-grid">
+                      <Link className="home-collection-btn" to="/coffee">Beans</Link>
+                      <Link className="home-collection-btn" to="/coffee">Ground</Link>
+                      <Link className="home-collection-btn" to="/coffee">Equipments</Link>
+                      <Link className="home-collection-btn" to="/coffee">Merchandise</Link>
+                    </div>
+                    <figure className="home-collection__image" aria-hidden="true">
                       <img
-                        src={encodeURI('/Master the art of espresso with our Clive Coffee….jpeg')}
-                        alt="Coffee being prepared"
+                        src={encodeURI('/Roasted Coffee.jpeg')}
+                        alt="Brewed coffee"
                         loading="lazy"
                         onError={handleCoffeeImageError}
                       />
                     </figure>
-                    <div className="media-inline__copy" data-reveal style={{ '--reveal-delay': '80ms' } as React.CSSProperties}>
-                      <div className="hero__badge">Small-batch focus</div>
-                      <h2 className="media-inline__title">Built for clarity</h2>
-                      <p className="media-inline__text">
-                        Clean processing, careful sorting, and roast profiles tuned for sweetness.
-                        Browse the lineup, then build a custom blend by percentage.
-                      </p>
-                    </div>
-                  </div>
+                  </aside>
                 </section>
 
-                <section className="section section--alt">
+                <section className="section section--alt section--types">
                   <div className="section__header">
                     <h2>Types of coffee available</h2>
                     <p>
                       Browse our Ethiopian lineup featuring Yirgacheffe, Sidamo, Guji, Harrar, Limu, Bench Maji,
-                      and Kaffa. You'll find lots prepared as Washed, Natural, and traditional Forest Coffee—each
+                      and Kaffa. You&apos;ll find lots prepared as Washed, Natural, and traditional Forest Coffee—each
                       highlighting a different balance of florals, fruit, and sweetness.
                     </p>
                   </div>
@@ -1347,11 +1405,7 @@ function App() {
 
                 <section className="section section--media" aria-label="Process gallery" data-reveal>
                   <div className="media-inline__cards" aria-label="Coffee types explained">
-                    <article
-                      className="media-inline__card"
-                      data-reveal
-                      style={{ '--reveal-delay': '0ms' } as React.CSSProperties}
-                    >
+                    <article className="media-inline__card" data-reveal>
                       <div className="media-inline__cardImage" aria-hidden="true">
                         <img
                           src={encodeURI('/As is Coffee beans.jpeg')}
@@ -1366,11 +1420,7 @@ function App() {
                       </div>
                     </article>
 
-                    <article
-                      className="media-inline__card"
-                      data-reveal
-                      style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
-                    >
+                    <article className="media-inline__card" data-reveal>
                       <div className="media-inline__cardImage" aria-hidden="true">
                         <img
                           src={encodeURI('/Grounded Coffee.jpeg')}
@@ -1385,11 +1435,7 @@ function App() {
                       </div>
                     </article>
 
-                    <article
-                      className="media-inline__card"
-                      data-reveal
-                      style={{ '--reveal-delay': '160ms' } as React.CSSProperties}
-                    >
+                    <article className="media-inline__card" data-reveal>
                       <div className="media-inline__cardImage" aria-hidden="true">
                         <img
                           src={encodeURI('/Roasted Coffee.jpeg')}
@@ -1408,7 +1454,7 @@ function App() {
 
                 <section className="section">
                   <div className="section__header">
-                    <h2>How it’s collected, roasted, and grounded</h2>
+                    <h2>How it&apos;s collected, roasted, and grounded</h2>
                     <p>Three steps, handled with care from farm to cup.</p>
                   </div>
                   <div className="details-grid">
@@ -1426,47 +1472,13 @@ function App() {
                         We roast to order and cool quickly to lock in aromatics. Every batch is handled with care—
                         consistent charge temperatures, tracked development, and fast cooling—so the cup stays sweet
                         and expressive.
-                        <br />
-                        <br />
-                        Profiles are adjusted for espresso or filter so you get balanced sweetness, sparkling acidity,
-                        and a finish that stays clean.
                       </p>
                     </div>
                     <div className="details-card">
                       <h3>Grounded</h3>
                       <p>
-                        Choose whole bean or roasted & ground. If you pick ground, we match it to your brew method
+                        Choose whole bean or roasted &amp; ground. If you pick ground, we match it to your brew method
                         (espresso, pour-over, French press) so extraction stays even and the cup stays sweet.
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-                <section className="section section--alt">
-                  <div className="section__header">
-                    <h2>Fulfilment & future roadmap</h2>
-                    <p>
-                      We roast twice weekly from Addis Ababa, ship globally with cold-chain partners, and store
-                      every blend profile for your next order.
-                    </p>
-                  </div>
-                  <div className="details-grid">
-                    <div className="details-card">
-                      <h3>Dispatch cadence</h3>
-                      <p>Mondays & Thursdays. Place custom blends 24 hours before to guarantee roast slots.</p>
-                    </div>
-                    <div className="details-card">
-                      <h3>Upcoming mobile app</h3>
-                      <p>
-                        Mobile ordering launches next. Expect brew logging, subscription management, and push
-                        alerts when micro-lots drop.
-                      </p>
-                    </div>
-                    <div className="details-card">
-                      <h3>Wholesale support</h3>
-                      <p>
-                        Dedicated account specialists, brew recipes, and telemetry exports for each roast
-                        profile.
                       </p>
                     </div>
                   </div>
@@ -1482,7 +1494,14 @@ function App() {
                 <section className="section" id="catalog">
                   <div className="catalog">
                     {catalog.map((coffee) => (
-                      <article className="coffee-card" key={coffee.id}>
+                      <article
+                        className={`coffee-card ${highlightCoffeeId === coffee.id ? 'coffee-card--highlighted' : ''}`}
+                        key={coffee.id}
+                        id={`coffee-${coffee.id}`}
+                        ref={(node) => {
+                          coffeeCardRefs.current[coffee.id] = node
+                        }}
+                      >
                         <div className="coffee-card__image" aria-hidden="true">
                           <img
                             src={`/coffees/${coffee.id}.jpg`}
@@ -2023,6 +2042,33 @@ function App() {
                   {authMode === 'signup' ? 'Log in instead' : 'Create one'}
                 </button>
               </p>
+            </div>
+          </div>
+        ) : null}
+
+        {isSignOutDialogOpen ? (
+          <div
+            className="prompt-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="signout-dialog-title"
+            onClick={cancelSignOut}
+          >
+            <div className="prompt-card signout-dialog" onClick={(event) => event.stopPropagation()}>
+              <h2 className="signout-dialog__title" id="signout-dialog-title">
+                Log out?
+              </h2>
+              <p className="signout-dialog__text">
+                You will need to log in again to view your account, orders, and saved cart.
+              </p>
+              <div className="signout-dialog__actions">
+                <button className="roast-prompt__cancel" type="button" onClick={cancelSignOut}>
+                  Cancel
+                </button>
+                <button className="auth-form__submit signout-dialog__confirm" type="button" onClick={confirmSignOut}>
+                  Log out
+                </button>
+              </div>
             </div>
           </div>
         ) : null}
