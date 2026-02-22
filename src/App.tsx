@@ -1403,8 +1403,8 @@ function App() {
                   </div>
                 </section>
 
-                <section className="section section--media" aria-label="Process gallery" data-reveal>
-                  <div className="media-inline__cards" aria-label="Coffee types explained">
+                <section className="section section--media section--media-featured" aria-label="Process gallery" data-reveal>
+                  <div className="media-inline__cards media-inline__cards--featured" aria-label="Coffee types explained">
                     <article className="media-inline__card" data-reveal>
                       <div className="media-inline__cardImage" aria-hidden="true">
                         <img
