@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  font-family: 'Inter', 'Poppins', 'Segoe UI', sans-serif;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-sand-0);
@@ -10,15 +10,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --color-base: #fbfcff;
-  --color-graphite: linear-gradient(180deg, #fbfcff 0%, #eef7f6 55%, #f7efe7 100%);
-  --color-sand-0: #1f2937;
-  --color-sand-1: #0b5d57;
-  --color-sand-2: #0f766e;
-  --color-sand-3: #475569;
-  --color-sand-4: rgba(31, 41, 55, 0.65);
-  --color-accent-teal: #0f766e;
-  --color-accent-coral: #fb7185;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --color-base: #f5efe7;
+  --color-base-strong: #efe2d0;
+  --color-graphite: linear-gradient(180deg, #faf4ee 0%, #f6efe5 48%, #efe3d5 100%);
+  --color-sand-0: #23170d;
+  --color-sand-1: #6a3d20;
+  --color-sand-2: #98613a;
+  --color-sand-3: #705846;
+  --color-sand-4: rgba(35, 23, 13, 0.68);
+  --color-accent-teal: #1e6a62;
+  --color-accent-coral: #d07a4b;
+  --color-accent-gold: #c79a54;
+  --shadow-soft: 0 18px 40px rgba(79, 48, 20, 0.08);
+  --shadow-medium: 0 24px 60px rgba(79, 48, 20, 0.12);
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
@@ -37,6 +43,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
 
 * {
@@ -46,8 +53,41 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-base);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(30, 106, 98, 0.1), transparent 26%),
+    linear-gradient(180deg, #fbf7f1 0%, #f6efe5 52%, #efe2d1 100%);
   color: var(--color-sand-0);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(24px);
+}
+
+body::before {
+  top: -6rem;
+  right: -5rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: rgba(30, 106, 98, 0.08);
+}
+
+body::after {
+  left: -4rem;
+  bottom: 12rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: rgba(208, 122, 75, 0.1);
 }
 
 a {
@@ -74,6 +114,7 @@ a:focus-visible {
 #root {
   width: 100%;
   margin: 0;
+  isolation: isolate;
 }
 
 @media (prefers-reduced-motion: reduce) {

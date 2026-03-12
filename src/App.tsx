@@ -1326,6 +1326,28 @@ function App() {
                       </Link>
                     </div>
                   </div>
+                  <aside className="home-hero__panel" aria-label="Abyssinia Beans highlights" data-reveal>
+                    <p className="home-hero__eyebrow">Roastery snapshot</p>
+                    <div className="home-hero__stats">
+                      <div className="home-hero__stat">
+                        <strong>7</strong>
+                        <span>origin regions</span>
+                      </div>
+                      <div className="home-hero__stat">
+                        <strong>3</strong>
+                        <span>preparation styles</span>
+                      </div>
+                      <div className="home-hero__stat">
+                        <strong>24h</strong>
+                        <span>roast-to-pack rhythm</span>
+                      </div>
+                    </div>
+                    <div className="home-hero__tags" aria-label="Flavor profiles">
+                      <span>Floral lift</span>
+                      <span>Berry sweetness</span>
+                      <span>Chocolate finish</span>
+                    </div>
+                  </aside>
                 </header>
 
                 <section className="section home-showcase" data-reveal>
