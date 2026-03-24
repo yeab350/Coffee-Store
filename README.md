@@ -1,5 +1,5 @@
 # Abyssinia Beans
-2
+1
 
 Immersive single-page experience for exploring Ethiopian microlots, balancing custom blends, and staging orders for the roastery. Built with React, TypeScript, and Vite.
 
